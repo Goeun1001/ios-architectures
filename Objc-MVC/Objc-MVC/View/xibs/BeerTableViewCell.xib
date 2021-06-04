@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="BeerTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="BeerTableViewCell" rowHeight="92" id="KGk-i7-Jjw" customClass="BeerTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="324" height="114"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="324" height="114"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Bz-bb-DXl">
+                        <rect key="frame" x="15" y="7" width="100" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="Rkq-jJ-OHQ"/>
+                            <constraint firstAttribute="height" constant="100" id="uuo-o2-GV9"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wD-h8-cZA">
+                        <rect key="frame" x="123" y="9" width="191" height="96"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsw-y4-ztQ">
+                                <rect key="frame" x="0.0" y="0.0" width="31" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D99-99-Tec">
+                                <rect key="frame" x="0.0" y="14" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hE-Ne-eTx">
+                                <rect key="frame" x="0.0" y="35" width="191" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGray2Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="2hE-Ne-eTx" firstAttribute="top" secondItem="D99-99-Tec" secondAttribute="bottom" id="4NK-OZ-ZDG"/>
+                            <constraint firstItem="2hE-Ne-eTx" firstAttribute="top" secondItem="D99-99-Tec" secondAttribute="bottom" id="51w-QQ-U6j"/>
+                            <constraint firstItem="D99-99-Tec" firstAttribute="leading" secondItem="1wD-h8-cZA" secondAttribute="leading" id="8Vq-QQ-2pV"/>
+                            <constraint firstItem="2hE-Ne-eTx" firstAttribute="top" secondItem="D99-99-Tec" secondAttribute="bottom" id="AnA-MY-5Jo"/>
+                            <constraint firstItem="D99-99-Tec" firstAttribute="top" secondItem="1wD-h8-cZA" secondAttribute="top" constant="14" id="Dc9-eu-WII"/>
+                            <constraint firstAttribute="bottom" secondItem="2hE-Ne-eTx" secondAttribute="bottom" id="HZg-Vk-soc"/>
+                            <constraint firstItem="hsw-y4-ztQ" firstAttribute="leading" secondItem="1wD-h8-cZA" secondAttribute="leading" id="LKh-Ph-JBQ"/>
+                            <constraint firstItem="hsw-y4-ztQ" firstAttribute="top" secondItem="1wD-h8-cZA" secondAttribute="top" id="QCk-ts-eDR"/>
+                            <constraint firstItem="2hE-Ne-eTx" firstAttribute="leading" secondItem="1wD-h8-cZA" secondAttribute="leading" id="San-bl-He5"/>
+                            <constraint firstItem="2hE-Ne-eTx" firstAttribute="top" secondItem="D99-99-Tec" secondAttribute="bottom" id="bOm-om-Gyx"/>
+                            <constraint firstAttribute="trailing" secondItem="2hE-Ne-eTx" secondAttribute="trailing" id="sWf-aH-fUd"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="1wD-h8-cZA" secondAttribute="trailing" constant="10" id="2K4-mu-L5e"/>
+                    <constraint firstItem="3Bz-bb-DXl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="AwK-4T-GjS"/>
+                    <constraint firstAttribute="bottom" secondItem="3Bz-bb-DXl" secondAttribute="bottom" constant="7" id="Lcl-Sa-PWp"/>
+                    <constraint firstItem="1wD-h8-cZA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="V5X-oi-6gT"/>
+                    <constraint firstItem="3Bz-bb-DXl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="eNQ-QD-WFn"/>
+                    <constraint firstItem="1wD-h8-cZA" firstAttribute="leading" secondItem="3Bz-bb-DXl" secondAttribute="trailing" constant="8" symbolic="YES" id="nSG-qh-TN1"/>
+                    <constraint firstAttribute="bottom" secondItem="1wD-h8-cZA" secondAttribute="bottom" constant="9" id="qSV-2z-UXB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="beerImageView" destination="3Bz-bb-DXl" id="r1H-ZR-5Px"/>
+                <outlet property="descLabel" destination="2hE-Ne-eTx" id="00V-2u-Kdf"/>
+                <outlet property="idLabel" destination="hsw-y4-ztQ" id="SJD-Cj-FIn"/>
+                <outlet property="nameLabel" destination="D99-99-Tec" id="PCb-aJ-JWr"/>
+            </connections>
+            <point key="canvasLocation" x="113.04347826086958" y="102.45535714285714"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -11,7 +11,7 @@
         <!--Search by ID-->
         <scene sceneID="o4M-xn-TrJ">
             <objects>
-                <viewController id="1HD-GT-Uo4" customClass="SearchBeerVC" customModule="MVC_storyboard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1HD-GT-Uo4" customClass="SearchBeerVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NiV-HN-Y1C">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -78,11 +78,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search by ID" id="a2Z-09-YHy"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="bFw-4V-Q4w" id="4GM-GJ-Q0z"/>
-                        <outlet property="beerImageView" destination="mgm-Vn-tvL" id="pfx-aX-HeG"/>
-                        <outlet property="descLabel" destination="qC3-QY-9V5" id="ww9-vj-rRz"/>
-                        <outlet property="idLabel" destination="u9d-Nd-MaT" id="VRq-gm-Dwn"/>
-                        <outlet property="nameLabel" destination="XFT-Yo-yFQ" id="4bm-GM-tUH"/>
+                        <outlet property="activityIndicator" destination="bFw-4V-Q4w" id="Og5-nm-xhZ"/>
+                        <outlet property="beerImageView" destination="mgm-Vn-tvL" id="wNt-zM-s5C"/>
+                        <outlet property="descLabel" destination="qC3-QY-9V5" id="82Q-Vw-tnt"/>
+                        <outlet property="idLabel" destination="u9d-Nd-MaT" id="cje-Sx-5w2"/>
+                        <outlet property="nameLabel" destination="XFT-Yo-yFQ" id="pWY-be-BNu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="njx-FM-8yk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -92,7 +92,7 @@
         <!--BeerList-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="BeerListVC" customModule="MVC_storyboard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="BeerListVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,6 +100,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bSe-lj-mvb">
                                 <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Tqy-Jr-zvU"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Ijs-cS-EYR"/>
+                                </connections>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="os3-ie-uZf">
                                 <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
@@ -118,8 +122,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="BeerList" id="LcX-NT-WXD"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="os3-ie-uZf" id="hyU-lE-CCK"/>
-                        <outlet property="tableView" destination="bSe-lj-mvb" id="1RT-Er-byd"/>
+                        <outlet property="activityIndicator" destination="os3-ie-uZf" id="GPf-Gn-3fA"/>
+                        <outlet property="beerTableView" destination="bSe-lj-mvb" id="slR-GJ-W4P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -206,7 +210,7 @@
         <!--Random Beer-->
         <scene sceneID="jND-Hj-vbN">
             <objects>
-                <viewController id="sAe-rt-Bn2" customClass="RandomBeerVC" customModule="MVC_storyboard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sAe-rt-Bn2" customClass="RandomBeerVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fqz-eU-eHY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -263,24 +267,24 @@
                                     <color key="titleColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="rarndomButtonClicked:" destination="sAe-rt-Bn2" eventType="touchUpInside" id="6wP-kp-jrS"/>
+                                    <action selector="rarndomButtonClicked:" destination="sAe-rt-Bn2" eventType="touchUpInside" id="KAZ-ig-nB0"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="OLe-fI-SDw">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Afw-gt-LQh">
                                 <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="quk-LK-XT0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Afw-gt-LQh" firstAttribute="centerY" secondItem="Fqz-eU-eHY" secondAttribute="centerY" id="37Y-Hh-adQ"/>
                             <constraint firstItem="quk-LK-XT0" firstAttribute="trailing" secondItem="Hvv-T0-qjb" secondAttribute="trailing" constant="20" id="4jD-3E-DdE"/>
                             <constraint firstItem="TNH-Hj-7oj" firstAttribute="leading" secondItem="quk-LK-XT0" secondAttribute="leading" constant="50" id="4vE-Rg-qBp"/>
                             <constraint firstItem="Hvv-T0-qjb" firstAttribute="centerX" secondItem="Fqz-eU-eHY" secondAttribute="centerX" id="6ic-VK-3td"/>
                             <constraint firstItem="Hvv-T0-qjb" firstAttribute="centerX" secondItem="zWt-9X-3MW" secondAttribute="centerX" id="8rY-q9-5Ca"/>
-                            <constraint firstItem="OLe-fI-SDw" firstAttribute="centerX" secondItem="Fqz-eU-eHY" secondAttribute="centerX" id="9ME-3V-GQI"/>
+                            <constraint firstItem="Afw-gt-LQh" firstAttribute="centerX" secondItem="Fqz-eU-eHY" secondAttribute="centerX" id="9lr-ac-A8n"/>
                             <constraint firstItem="quk-LK-XT0" firstAttribute="trailing" secondItem="TNH-Hj-7oj" secondAttribute="trailing" constant="50" id="9nN-hS-M6W"/>
                             <constraint firstItem="zWt-9X-3MW" firstAttribute="leading" secondItem="quk-LK-XT0" secondAttribute="leading" constant="192" id="V2S-a2-Yce"/>
-                            <constraint firstItem="OLe-fI-SDw" firstAttribute="centerY" secondItem="Fqz-eU-eHY" secondAttribute="centerY" id="Waq-n0-qHD"/>
                             <constraint firstItem="TNH-Hj-7oj" firstAttribute="top" secondItem="Hvv-T0-qjb" secondAttribute="bottom" constant="30" id="ZdY-Sz-biX"/>
                             <constraint firstItem="zWt-9X-3MW" firstAttribute="top" secondItem="quk-LK-XT0" secondAttribute="top" constant="287" id="b51-BZ-rwq"/>
                             <constraint firstItem="quk-LK-XT0" firstAttribute="bottom" secondItem="TNH-Hj-7oj" secondAttribute="bottom" constant="53" id="dLe-Kb-RuE"/>
@@ -290,11 +294,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Random Beer" id="ZfX-R4-N1d"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="OLe-fI-SDw" id="j4q-LY-cBd"/>
-                        <outlet property="beerImageView" destination="GZo-Eg-wcH" id="dHu-Ke-Tj0"/>
-                        <outlet property="descLabel" destination="TYb-nQ-BGk" id="de0-NV-oae"/>
-                        <outlet property="idLabel" destination="zWt-9X-3MW" id="8hn-LL-bSJ"/>
-                        <outlet property="nameLabel" destination="77w-cl-wot" id="MOa-Lj-E4g"/>
+                        <outlet property="activityIndicator" destination="Afw-gt-LQh" id="IvJ-Uy-Xpg"/>
+                        <outlet property="beerImageView" destination="GZo-Eg-wcH" id="QDo-54-SgC"/>
+                        <outlet property="descLabel" destination="TYb-nQ-BGk" id="XdL-Ht-Db5"/>
+                        <outlet property="idLabel" destination="zWt-9X-3MW" id="8fI-jd-hE9"/>
+                        <outlet property="nameLabel" destination="77w-cl-wot" id="lXo-Q1-1Wk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wsA-Js-4ES" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -304,7 +308,7 @@
         <!--Detail BeerVC-->
         <scene sceneID="rjx-Gw-WDZ">
             <objects>
-                <viewController storyboardIdentifier="DetailBeerVC" id="Y0w-Sx-301" customClass="DetailBeerVC" customModule="MVC_storyboard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailBeerVC" id="Y0w-Sx-301" customClass="DetailBeerVC" customModule="Objc_MVC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wLX-C5-cYK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -365,10 +369,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="beerImageView" destination="ETC-F7-KDh" id="dgQ-gK-NGy"/>
-                        <outlet property="descLabel" destination="UUw-L3-3g2" id="urY-QF-NaW"/>
-                        <outlet property="idLabel" destination="0TI-rA-3fD" id="vNu-XZ-5od"/>
-                        <outlet property="nameLabel" destination="JEK-JD-Lrl" id="hBP-M1-fIq"/>
+                        <outlet property="beerImageView" destination="ETC-F7-KDh" id="U7t-dP-Mhm"/>
+                        <outlet property="descLabel" destination="UUw-L3-3g2" id="uCy-mn-dDX"/>
+                        <outlet property="idLabel" destination="0TI-rA-3fD" id="nlq-qi-eqz"/>
+                        <outlet property="nameLabel" destination="JEK-JD-Lrl" id="Lu0-9S-t7l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6LY-wt-zwr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

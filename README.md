@@ -27,7 +27,7 @@ Thank for people of this list!
 
 ## Concept
 
-1. Objc
+1. [Objc](#1-objc---mvc)
 2. [Swift](#1-mvc---storyboard)
 3. [SwiftUI](#1-swiftui--mv)
 
@@ -48,6 +48,18 @@ Package Management - Cocoapods
 ````
 $ pod install
 ````
+
+
+
+## 1. Objc-MVC
+
+UI - Storyboard
+
+Image - NSCache
+
+Network - NSData to Json
+
+❗️I don't know how to make 'Beer' nullable...
 
 
 
