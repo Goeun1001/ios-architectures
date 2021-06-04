@@ -27,7 +27,7 @@ Thank for people of this list!
 
 ## Concept
 
-1. [Objc](#1-objc---mvc)
+1. [Objc](#1-objc-mvc)
 2. [Swift](#1-mvc---storyboard)
 3. [SwiftUI](#1-swiftui--mv)
 
