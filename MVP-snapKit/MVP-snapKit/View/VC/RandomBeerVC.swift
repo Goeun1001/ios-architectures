@@ -8,7 +8,7 @@
 import UIKit
 import Then
 
-protocol RandomView: class {
+protocol RandomView: AnyObject {
     func onItemsRetrieval(beers: [Beer])
 }
 

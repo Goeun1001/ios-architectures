@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol RandomBeerViewPresenter: class {
+protocol RandomBeerViewPresenter: AnyObject {
     init(view: RandomView)
     func getRandom()
 }
@@ -25,8 +25,8 @@ class RandomBeerPresenter: RandomBeerViewPresenter {
     }
     
     func getRandom() {
-        networkingApi.getRandomBeer(completion: { beers in
-            self.view?.onItemsRetrieval(beers: beers)
+        networkingApi.getRandomBeer(completion: { [weak self] beers in
+            self?.view?.onItemsRetrieval(beers: beers)
         })
     }
     

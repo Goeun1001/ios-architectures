@@ -28,7 +28,7 @@ class BeerListVC: UIViewController {
         tableView.dataSource = self
     }
     
-    // MARK: Private Methods
+    // MARK: - Private Methods
     
     private func registerXib() {
         let nibName = UINib(nibName: "BeerTableViewCell", bundle: nil)
@@ -42,21 +42,21 @@ class BeerListVC: UIViewController {
     }
     
     @objc private func resetView() {
-        networkingApi.getBeerList(page: 1, completion: { beers in
-            self.beers = beers
+        networkingApi.getBeerList(page: 1, completion: { [weak self] beers in
+            self?.beers = beers
             DispatchQueue.main.async { // Change UI 
-                self.tableView.reloadData()
-                self.refreshControl.endRefreshing()
+                self?.tableView.reloadData()
+                self?.refreshControl.endRefreshing()
             }
         })
     }
     
     private func getBeerList() {
         activityIndicator.startAnimating()
-        networkingApi.getBeerList(page: self.page, completion: { beers in
-            self.beers += beers
+        networkingApi.getBeerList(page: self.page, completion: { [weak self] beers in
+            self?.beers += beers
             DispatchQueue.main.async { // Change UI
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         })
         activityIndicator.stopAnimating()

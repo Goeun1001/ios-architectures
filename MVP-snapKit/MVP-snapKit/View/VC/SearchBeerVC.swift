@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SearchView: class {
+protocol SearchView: AnyObject {
     func onItemsRetrieval(beers: [Beer])
 }
 

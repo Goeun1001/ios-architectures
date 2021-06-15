@@ -28,8 +28,8 @@ class RandomBeerVC: UIViewController {
     
     private func getRandom() {
         activityIndicator.startAnimating()
-        networkingApi.getRandomBeer(completion: { beers in
-            self.setupView(model: beers.first ?? Beer(id: 0, name: "", description: "", imageURL: ""))
+        networkingApi.getRandomBeer(completion: { [weak self] beers in
+            self?.setupView(model: beers.first ?? Beer(id: 0, name: "", description: "", imageURL: ""))
         })
         activityIndicator.stopAnimating()
     }

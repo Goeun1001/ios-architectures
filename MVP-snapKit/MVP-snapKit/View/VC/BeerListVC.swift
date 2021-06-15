@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol BeerListView: class {
+protocol BeerListView: AnyObject {
     func onItemsRetrieval(beers: [Beer])
     func onItemsReset(beers: [Beer])
 }
@@ -94,18 +94,18 @@ extension BeerListVC: BeerListView {
     func onItemsRetrieval(beers: [Beer]) {
         self.beers += beers
         DispatchQueue.main.async { // Change UI
-            activityIndicator.startAnimating()
+            self.activityIndicator.startAnimating()
             self.tableView.reloadData()
-            activityIndicator.stopAnimating()
+            self.activityIndicator.stopAnimating()
         }
     }
     
     func onItemsReset(beers: [Beer]) {
         self.beers = beers
         DispatchQueue.main.async { // Change UI
-            activityIndicator.startAnimating()
+            self.activityIndicator.startAnimating()
             self.tableView.reloadData()
-            activityIndicator.stopAnimating()
+            self.activityIndicator.stopAnimating()
         }
     }
 }

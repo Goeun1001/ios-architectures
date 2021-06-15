@@ -37,7 +37,6 @@ class DetailBeerVC: UIViewController {
         view.backgroundColor = .white
         view.addSubview(detailView)
         detailView.setupView(model: beer)
-        detailView.addSubview(indicator)
         
         detailView.snp.makeConstraints {
             $0.top.equalTo(view.layoutMarginsGuide)

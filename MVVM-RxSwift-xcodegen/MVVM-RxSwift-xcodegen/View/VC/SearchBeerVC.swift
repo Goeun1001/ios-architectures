@@ -72,8 +72,8 @@ class SearchBeerVC: UIViewController {
             }).disposed(by: disposeBag)
         
         searchController.searchBar.rx.searchButtonClicked
-            .subscribe(onNext: {
-                self.searchController.dismiss(animated: true, completion: nil)
+            .subscribe(onNext: { [weak self] _ in
+                self?.searchController.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
     }

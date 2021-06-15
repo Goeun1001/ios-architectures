@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol BeerListViewPresenter: class {
+protocol BeerListViewPresenter: AnyObject {
     init(view: BeerListView)
     func viewDidLoad()
     func refresh()
@@ -31,8 +31,8 @@ class BeerListPresenter: BeerListViewPresenter {
     // MARK: - Life Cycle
     
     func viewDidLoad() {
-        networkingApi.getBeerList(page: 1, completion: { beers in
-            self.view?.onItemsReset(beers: beers)
+        networkingApi.getBeerList(page: 1, completion: { [weak self] beers in
+            self?.view?.onItemsReset(beers: beers)
         })
     }
     
@@ -44,15 +44,15 @@ class BeerListPresenter: BeerListViewPresenter {
     
     func refresh() {
         self.page = 1
-        networkingApi.getBeerList(page: 1, completion: { beers in
-            self.view?.onItemsReset(beers: beers)
+        networkingApi.getBeerList(page: 1, completion: { [weak self] beers in
+            self?.view?.onItemsReset(beers: beers)
         })
     }
     
     func getNextPage() {
         self.page += 1
-        networkingApi.getBeerList(page: self.page, completion: { beers in
-            self.view?.onItemsRetrieval(beers: beers)
+        networkingApi.getBeerList(page: self.page, completion: { [weak self] beers in
+            self?.view?.onItemsRetrieval(beers: beers)
         })
     }
 }

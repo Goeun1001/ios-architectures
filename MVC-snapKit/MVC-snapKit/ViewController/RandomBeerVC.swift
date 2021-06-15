@@ -13,7 +13,7 @@ class RandomBeerVC: UIViewController {
     private let randomView = BeerView()
     private let networkingApi: NetworkingService!
     
-    lazy var randomButton: UIButton = {
+    private lazy var randomButton: UIButton = {
         let randomButton = UIButton()
         randomButton.setTitle("Roll Random", for: .normal)
         randomButton.backgroundColor = UIColor.orange
@@ -50,8 +50,8 @@ class RandomBeerVC: UIViewController {
     
     private func getRandom() {
         self.activityIndicator.startAnimating()
-        networkingApi.getRandomBeer(completion: { beers in
-            self.randomView.setupView(model: beers.first ?? Beer(id: 0, name: "", description: "", imageURL: ""))
+        networkingApi.getRandomBeer(completion: { [weak self] beers in
+            self?.randomView.setupView(model: beers.first ?? Beer(id: 0, name: "", description: "", imageURL: ""))
         })
         self.activityIndicator.stopAnimating()
     }

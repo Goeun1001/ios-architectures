@@ -25,7 +25,7 @@ targets:
   MVVM-RxSwift-xcodegenTests:
     type: bundle.unit-test # 테스트 타입
     platform: iOS # 플랫폼
-    sources: [MVVM-RxSwift-xcodegen, MVVM-RxSwift-xcodegenTests]
+    sources: [MVVM-RxSwift-xcodegenTests]
     settings:
       groups: [app]
       INFOPLIST_FILE: Info.plist # Info.plist 등록

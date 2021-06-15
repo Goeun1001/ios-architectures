@@ -48,8 +48,8 @@ extension SearchBeerVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if searchController.searchBar.text != "" {
             activityIndicator.startAnimating()
-            networkingApi.searchBeer(id: Int(searchController.searchBar.text!)!, completion: { beers in
-                self.setupView(model: beers.first ?? Beer(id: 0, name: "", description: "", imageURL: ""))
+            networkingApi.searchBeer(id: Int(searchController.searchBar.text!)!, completion: { [weak self] beers in
+                self?.setupView(model: beers.first ?? Beer(id: 0, name: "", description: "", imageURL: ""))
             })
             activityIndicator.stopAnimating()
         }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol SearchBeerViewPresenter: class {
+protocol SearchBeerViewPresenter: AnyObject {
     init(view: SearchView)
     func search(id: Int)
 }
@@ -25,8 +25,8 @@ class SearchBeerPresenter: SearchBeerViewPresenter {
     }
     
     func search(id: Int) {
-        networkingApi.searchBeer(id: id, completion: { beers in
-            self.view?.onItemsRetrieval(beers: beers)
+        networkingApi.searchBeer(id: id, completion: { [weak self] beers in
+            self?.view?.onItemsRetrieval(beers: beers)
         })
     }
     
