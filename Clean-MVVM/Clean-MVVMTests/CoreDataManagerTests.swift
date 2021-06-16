@@ -18,6 +18,7 @@ class CoreDataManagerTests: XCTestCase {
     let jsonBeers = Bundle.getBeerFromJson(.getBeerList(page: 1))
     
     override func setUp() {
+        coreDataManager.resetData()
         for beer in jsonBeers {
             coreDataManager.saveBeer(beer: beer)
         }

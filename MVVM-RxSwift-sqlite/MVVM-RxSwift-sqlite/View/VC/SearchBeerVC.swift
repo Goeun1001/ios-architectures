@@ -86,7 +86,7 @@ class SearchBeerVC: UIViewController {
         
         viewModel.output.errorRelay
             .subscribe(onNext: { [weak self] error in
-                self?.showErrorAlert(with: error.localizedDescription)
+                self?.showErrorAlert(with: error.message)
             }).disposed(by: disposeBag)
         
         searchController.searchBar.rx.searchButtonClicked

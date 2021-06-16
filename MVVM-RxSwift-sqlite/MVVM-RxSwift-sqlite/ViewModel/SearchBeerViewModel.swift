@@ -21,7 +21,7 @@ class SearchBeerViewModel {
     struct Output {
         let beer = BehaviorRelay<[Beer]>(value: [])
         let isLoading = BehaviorRelay<Bool>(value: false)
-        let errorRelay = PublishRelay<Error>()
+        let errorRelay = PublishRelay<NetworkingError>()
     }
     
     let input = Input()
@@ -37,7 +37,7 @@ class SearchBeerViewModel {
             .flatMapLatest { id in
                 repository.searchID(id: Int(id) ?? 0)
                     .trackActivity(activityIndicator)
-                    .do(onError: { self.output.errorRelay.accept($0) })
+                    .do(onError: { self.output.errorRelay.accept($0 as! NetworkingError) })
                     .catchErrorJustReturn([])
             }
             .bind(to: output.beer)

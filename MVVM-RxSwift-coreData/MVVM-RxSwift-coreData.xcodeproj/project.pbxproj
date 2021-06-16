@@ -10,7 +10,6 @@
 		A01C5A5A6682DD7482E1BD9A /* Pods_MVVM_RxSwift_coreData_MVVM_RxSwift_coreDataTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C61D100F497322006D02ABBE /* Pods_MVVM_RxSwift_coreData_MVVM_RxSwift_coreDataTests.framework */; };
 		D907F72624B5054BB4025C22 /* Pods_MVVM_RxSwift_coreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC670330A0CDC8AFCA8AAB1 /* Pods_MVVM_RxSwift_coreData.framework */; };
 		D9227BA7264A56D0004F6841 /* Bundle+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93ECA182642A6EE00851ADA /* Bundle+Decode.swift */; };
-		D9227BC3264AB634004F6841 /* ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9227BC2264AB634004F6841 /* ex.swift */; };
 		D93EC96A26423EAB00851ADA /* BeerListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC96926423EAB00851ADA /* BeerListRepository.swift */; };
 		D93EC9B526427F9700851ADA /* Beer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D93EC9B326427F9700851ADA /* Beer.xcdatamodeld */; };
 		D93EC9B92642805100851ADA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC9B82642805100851ADA /* CoreDataManager.swift */; };
@@ -62,7 +61,6 @@
 		5257EB231D7B28FBCD516FD7 /* Pods-MVVM-RxSwift-coreData-MVVM-RxSwift-coreDataTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-RxSwift-coreData-MVVM-RxSwift-coreDataTests.release.xcconfig"; path = "Target Support Files/Pods-MVVM-RxSwift-coreData-MVVM-RxSwift-coreDataTests/Pods-MVVM-RxSwift-coreData-MVVM-RxSwift-coreDataTests.release.xcconfig"; sourceTree = "<group>"; };
 		AAC670330A0CDC8AFCA8AAB1 /* Pods_MVVM_RxSwift_coreData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_RxSwift_coreData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C61D100F497322006D02ABBE /* Pods_MVVM_RxSwift_coreData_MVVM_RxSwift_coreDataTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_RxSwift_coreData_MVVM_RxSwift_coreDataTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9227BC2264AB634004F6841 /* ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ex.swift; sourceTree = "<group>"; };
 		D93EC96926423EAB00851ADA /* BeerListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListRepository.swift; sourceTree = "<group>"; };
 		D93EC9B426427F9700851ADA /* Beer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Beer.xcdatamodel; sourceTree = "<group>"; };
 		D93EC9B82642805100851ADA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -158,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				D93EC9B326427F9700851ADA /* Beer.xcdatamodeld */,
-				D9227BC2264AB634004F6841 /* ex.swift */,
 				D93EC9B82642805100851ADA /* CoreDataManager.swift */,
 				D93EC9BC2642809100851ADA /* BeerEntity.swift */,
 			);
@@ -464,7 +461,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9227BC3264AB634004F6841 /* ex.swift in Sources */,
 				D93EC96A26423EAB00851ADA /* BeerListRepository.swift in Sources */,
 				D9F96E5C263996460030E1C8 /* SearchBeerVC.swift in Sources */,
 				D9F96F4E263AB7DF0030E1C8 /* BeerListSection.swift in Sources */,

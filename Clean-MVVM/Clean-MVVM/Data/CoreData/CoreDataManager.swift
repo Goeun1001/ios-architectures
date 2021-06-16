@@ -18,7 +18,7 @@ class CoreDataManager: LocalManager {
     
     // MARK: - Core Data stack
     
-    lazy var persistentContainer: NSPersistentContainer = {
+    private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Beer")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -93,6 +93,20 @@ class CoreDataManager: LocalManager {
 }
 
 extension CoreDataManager {
+    
+    func resetData() {
+        let context = persistentContainer.viewContext
+        
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: BeerEntity.raw())
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+        } catch {
+            print(error)
+        }
+    }
     
     func fetchRequest(id: Int) -> NSFetchRequest<BeerEntity> {
         let request: NSFetchRequest = BeerEntity.fetchRequest()

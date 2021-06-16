@@ -20,7 +20,3 @@ struct Beer: Codable, Equatable {
         case imageURL = "image_url"
     }
 }
-
-struct BeerListRequest: Encodable {
-    let page: Int
-}

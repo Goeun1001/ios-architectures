@@ -16,7 +16,7 @@ enum NetworkingError: Error {
         case let .error(msg):
             return msg
         case .defaultError:
-            return "잠시 후에 다시 시도해주세요."
+            return "Please retry later."
         }
     }
 }

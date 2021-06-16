@@ -91,8 +91,7 @@ class BeerListVC: UIViewController {
         
         viewModel.output.errorRelay
             .subscribe(onNext: { [weak self] error in
-                print(error.localizedDescription)
-                self?.showErrorAlert(with: error.localizedDescription)
+                self?.showErrorAlert(with: error.message)
             }).disposed(by: disposeBag)
         
         tableView.rx.modelSelected(Beer.self)

@@ -23,4 +23,8 @@ extension BeerEntity {
     func toDTO() -> Beer {
         return .init(id: Int(id), name: name, description: desc, imageURL: imageURL)
     }
+    
+    static func raw() -> String {
+        return "BeerEntity"
+    }
 }
