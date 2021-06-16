@@ -22,7 +22,7 @@ $ bash <(curl -Ls https://install.tuist.io)
 
 ## Example - Project.swift
 
-```
+```swift
 import ProjectDescription
 
 let project = Project(

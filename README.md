@@ -254,13 +254,15 @@ Network - Moya
 
 Unit Tests 👌 - RxTest
 
-❗️ **Alert** : I used **' DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) '** Because If tabbarflow does not navigate to a total of 3 flows, it cannot navigate to an alert. If you know a better solution, please PR!
-
 
 
 ## 7-1. [Clean Architecture - RxFlow - Swinject](https://github.com/Goeun1001/ios-architectures/tree/master/Clean-RxFlow-Swinject)
 
-❗️ **Alert** : I used **' DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) '** Because If tabbarflow does not navigate to a total of 3 flows, it cannot navigate to an alert. If you know a better solution, please PR!
+7. [MVVM - RxSwift - RxFlow](https://github.com/Goeun1001/ios-architectures/tree/master/MVVM-RxSwift-rxflow) to Clean Architecture
+
+DI - Swinject
+
+
 
 ## 8. [ReactorKit - RxFlow](https://github.com/Goeun1001/ios-architectures/tree/master/ReactorKit-RxFlow)
 
@@ -269,8 +271,6 @@ UI - SnapKit, Then, RxDatasource
 Network - Moya
 
 Unit Tests 👌
-
-❗️ **Alert** : I used **' DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) '** Because If tabbarflow does not navigate to a total of 3 flows, it cannot navigate to an alert. If you know a better solution,
 
 
 

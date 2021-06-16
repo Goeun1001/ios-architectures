@@ -37,7 +37,7 @@ class TabBarFlow: Flow {
         let searchBeerFlow = SearchBeerFlow()
         let randomBeerFlow = RandomBeerFlow()
 
-        Flows.use(beerListFlow, searchBeerFlow, randomBeerFlow, when: .created) { [unowned self] (root1: UINavigationController, root2: UINavigationController, root3: UINavigationController) in
+        Flows.use(beerListFlow, searchBeerFlow, randomBeerFlow, when: .ready) { [unowned self] (root1: UINavigationController, root2: UINavigationController, root3: UINavigationController) in
             root1.tabBarItem = UITabBarItem(title: "Beer List", image: UIImage(systemName: "1.circle"), tag: 0)
             root2.tabBarItem = UITabBarItem(title: "Search ID", image: UIImage(systemName: "2.circle"), tag: 1)
             root3.tabBarItem = UITabBarItem(title: "Random", image: UIImage(systemName: "3.circle"), tag: 2)

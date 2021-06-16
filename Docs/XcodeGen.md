@@ -24,7 +24,7 @@ $ brew install xcodegen
 
 ## Example - project.yml
 
-```
+```yaml
 name: MVVM-RxSwift-xcodegen
 options:
   postGenCommand: pod install
@@ -58,7 +58,7 @@ targets:
       INFOPLIST_FILE: Info.plist
       commandLineArguments: [run: true, test: true]
     dependencies:
-      - target: MVVM-RxSwift-xcodegen
+      - target: MVVM-RxSwift-xcodegens
 ```
 
 ```

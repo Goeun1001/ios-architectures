@@ -82,7 +82,9 @@ class BeerListVC: UIViewController {
             }).disposed(by: disposeBag)
         
         tableView.rx.itemSelected
-            .subscribe(onNext: { self.tableView.deselectRow(at: $0, animated: true)})
+            .map { [weak self] _ in
+                self?.page += 1
+            }
             .disposed(by: disposeBag)
         
         tableView.rx.reachedBottom(offset: 120.0)

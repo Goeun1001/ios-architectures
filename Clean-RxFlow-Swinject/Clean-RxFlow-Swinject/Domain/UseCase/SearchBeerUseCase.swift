@@ -13,11 +13,7 @@ protocol SearchBeerUseCase {
 }
 
 final class DefaultSearchBeerUseCase: SearchBeerUseCase {
-    private let searchBeerRepository: SearchBeerRepository
-    
-    init(searchBeerRepository: SearchBeerRepository) {
-        self.searchBeerRepository = searchBeerRepository
-    }
+    @Inject private var searchBeerRepository: SearchBeerRepository
     
     func execute(id: Int) -> Single<[Beer]> {
         return searchBeerRepository.searchID(id: id)

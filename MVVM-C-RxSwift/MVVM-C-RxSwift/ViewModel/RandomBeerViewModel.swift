@@ -36,8 +36,9 @@ class RandomBeerViewModel {
             .flatMapLatest {
                 networkingApi.request(.random)
                     .trackActivity(activityIndicator)
-                    .do(onError: { self.output.errorRelay.accept($0) })
-                    .catchErrorJustReturn([])
+                    .do(onError: { [weak self] error in
+                        self?.output.errorRelay.accept(error)
+                    })
             }
             .bind(to: output.beer)
             .disposed(by: disposeBag)

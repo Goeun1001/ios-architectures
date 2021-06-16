@@ -41,20 +41,24 @@ class BeerListViewModel {
             .flatMap {
                 self.repository.getBeerList(page: self.page)
                     .trackActivity(activityIndicator)
-                    .do(onError: { self.output.errorRelay.accept($0 as! NetworkingError) })
-                    .catchErrorJustReturn([])
+                    .do(onError: { [weak self] error in
+                        self?.output.errorRelay.accept(error as! NetworkingError)
+                    })
             }
             .bind(to: self.output.list)
             .disposed(by: disposeBag)
         
         input.refreshTrigger
             .asObservable()
-            .map { self.page = 1 }
+            .map { [weak self] _ in
+                self?.page = 1
+            }
             .flatMap {
                 self.repository.getBeerList(page: self.page)
                     .trackActivity(refreshIndicator)
-                    .do(onError: { self.output.errorRelay.accept($0 as! NetworkingError) })
-                    .catchErrorJustReturn([])
+                    .do(onError: { [weak self] error in
+                        self?.output.errorRelay.accept(error as! NetworkingError)
+                    })
             }
             .bind(to: self.output.list)
             .disposed(by: disposeBag)
@@ -62,12 +66,15 @@ class BeerListViewModel {
         
         input.nextPageTrigger
             .asObservable()
-            .map { self.page += 1 }
+            .map { [weak self] _ in
+                self?.page += 1
+            }
             .flatMap {
                 self.repository.getBeerList(page: self.page)
                     .trackActivity(activityIndicator)
-                    .do(onError: { self.output.errorRelay.accept($0 as! NetworkingError) })
-                    .catchErrorJustReturn([])
+                    .do(onError: { [weak self] error in
+                        self?.output.errorRelay.accept(error as! NetworkingError)
+                    })
             }
             .map { self.output.list.value + $0 }
             .bind(to: self.output.list)

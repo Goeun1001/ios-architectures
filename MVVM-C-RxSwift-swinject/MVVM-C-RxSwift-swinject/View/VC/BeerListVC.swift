@@ -16,7 +16,7 @@ class BeerListVC: UIViewController {
     private let refreshControl = UIRefreshControl()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     private let disposeBag = DisposeBag()
-    private let viewModel = BeerListViewModel()
+    @Inject private var viewModel: BeerListViewModel
     
     private let coordinator: BeerListCoordinator
     
@@ -104,7 +104,9 @@ class BeerListVC: UIViewController {
             }).disposed(by: disposeBag)
         
         tableView.rx.itemSelected
-            .subscribe(onNext: { self.tableView.deselectRow(at: $0, animated: true)})
+            .subscribe(onNext: { [weak self] row in
+                self?.tableView.deselectRow(at: row, animated: true)
+            })
             .disposed(by: disposeBag)
         
         tableView.rx.reachedBottom(offset: 120.0)

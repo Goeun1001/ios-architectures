@@ -96,7 +96,9 @@ class BeerListVC: UIViewController, View {
             .disposed(by: disposeBag)
         
         tableView.rx.itemSelected
-            .subscribe(onNext: { self.tableView.deselectRow(at: $0, animated: true)})
+            .subscribe(onNext: { [weak self] row in
+                self?.tableView.deselectRow(at: row, animated: true)
+            })
             .disposed(by: disposeBag)
     }
     

@@ -41,7 +41,7 @@ class AppFlow: Flow {
     private func navigationToDashboardScreen() -> FlowContributors {
         let dashboardFlow = TabBarFlow()
 
-        Flows.use(dashboardFlow, when: .created) { [unowned self] root in
+        Flows.use(dashboardFlow, when: .ready) { [unowned self] root in
             self.rootViewController.pushViewController(root, animated: false)
         }
 

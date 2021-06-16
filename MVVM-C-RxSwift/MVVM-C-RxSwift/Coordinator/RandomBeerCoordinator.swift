@@ -9,12 +9,11 @@ import Foundation
 import UIKit
 
 class RandomBeerCoordinator: BaseCoordinator {
-    var delegate: dismissBarProtocol?
+    var tabbarCoordinator: TabBarCoordinator?
     
     override func start() {
-        let vc = RandomBeerVC(coordinator: self)
-        vc.tabBarItem = UITabBarItem(title: "Random", image: UIImage(systemName: "3.circle"), tag: 2)
-        self.navigationController.pushViewController(vc, animated: true)
+        let vc = UINavigationController(rootViewController: RandomBeerVC(coordinator: self))
+        self.navigationController = vc
     }
     
 }

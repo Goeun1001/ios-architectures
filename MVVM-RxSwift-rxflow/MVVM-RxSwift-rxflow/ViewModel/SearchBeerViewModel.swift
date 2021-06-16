@@ -24,7 +24,6 @@ class SearchBeerViewModel: Stepper {
     struct Output {
         let beer = BehaviorRelay<[Beer]>(value: [])
         let isLoading = BehaviorRelay<Bool>(value: false)
-        let errorRelay = PublishRelay<Error>()
     }
     
     let input = Input()
@@ -40,10 +39,9 @@ class SearchBeerViewModel: Stepper {
             .flatMapLatest { id in
                 networkingApi.request(.searchID(id: Int(id) ?? 0))
                     .trackActivity(activityIndicator)
-                    .do(onError: {
-                            self.steps.accept(BeerStep.alert($0.localizedDescription))
+                    .do(onError: { [weak self] error in
+                        self?.steps.accept(BeerStep.alert(error.localizedDescription))
                     })
-                    .catchErrorJustReturn([])
             }
             .bind(to: output.beer)
             .disposed(by: disposeBag)

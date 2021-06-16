@@ -9,12 +9,11 @@ import Foundation
 import UIKit
 
 class SearchBeerCoordinator: BaseCoordinator {
-    var delegate: dismissBarProtocol?
+    var tabbarCoordinator: TabBarCoordinator?
     
     override func start() {
-        let vc = SearchBeerVC(coordinator: self)
-        vc.tabBarItem = UITabBarItem(title: "Search ID", image: UIImage(systemName: "2.circle"), tag: 1)
-        self.navigationController.pushViewController(vc, animated: true)
+        let vc = UINavigationController(rootViewController: SearchBeerVC(coordinator: self))
+        self.navigationController = vc
     }
     
 }

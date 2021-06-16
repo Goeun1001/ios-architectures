@@ -13,7 +13,7 @@ class SearchBeerViewModel: Stepper {
     let steps = PublishRelay<Step>()
     
     private var disposeBag = DisposeBag()
-    private let searchBeerUseCase: SearchBeerUseCase
+    @Inject private var searchBeerUseCase: SearchBeerUseCase
     
     // MARK: - ViewModelType
     
@@ -24,24 +24,24 @@ class SearchBeerViewModel: Stepper {
     struct Output {
         let beer = BehaviorRelay<[Beer]>(value: [])
         let isLoading = BehaviorRelay<Bool>(value: false)
-        let errorRelay = PublishRelay<NetworkingError>()
     }
     
     let input = Input()
     let output = Output()
     
     
-    init(searchBeerUseCase: SearchBeerUseCase) {
-        self.searchBeerUseCase = searchBeerUseCase
+    init() {
         let activityIndicator = ActivityIndicator()
         
         input.searchTrigger
             .asObservable()
             .flatMapLatest { id in
-                searchBeerUseCase.execute(id: Int(id) ?? 0)
+                self.searchBeerUseCase.execute(id: Int(id) ?? 0)
                     .trackActivity(activityIndicator)
-                    .do(onError: { self.output.errorRelay.accept($0 as! NetworkingError) })
-                    .catchErrorJustReturn([])
+                    .do(onError: { [weak self] error in
+                        let error = error as! NetworkingError
+                        self?.steps.accept(BeerStep.alert(error.message))
+                    })
             }
             .bind(to: output.beer)
             .disposed(by: disposeBag)

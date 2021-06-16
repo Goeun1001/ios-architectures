@@ -10,7 +10,7 @@
 
 BeerTableViewCell.m
 
-```
+```objective-c
 if ([[beer imageURL] isKindOfClass:[NSString class]]) {
         UIImage *image = [[CacheManager sharedInstance] getCachedImageForKey: [beer imageURL]];
         
@@ -35,7 +35,7 @@ if ([[beer imageURL] isKindOfClass:[NSString class]]) {
 
 CacheManager.h
 
-```
+```objective-c
 @interface CacheManager : NSObject
 
 + (CacheManager*)sharedInstance;
@@ -52,7 +52,7 @@ CacheManager.h
 
 ## Network
 
-```
+```objective-c
 NSData *jsonSource = [NSData dataWithContentsOfURL:
                           [NSURL URLWithString: url]];
     

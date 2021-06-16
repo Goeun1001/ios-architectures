@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Flows.use(appFlow, when: .created) { root in
             self.window?.rootViewController = root
+            [MVVM - RxSwift - RxFlow](https://github.com/Goeun1001/ios-architectures/tree/master/MVVM-RxSwift-rxflow)
             self.window?.makeKeyAndVisible()
         }
         return true

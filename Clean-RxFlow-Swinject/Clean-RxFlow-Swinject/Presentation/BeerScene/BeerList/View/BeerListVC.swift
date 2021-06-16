@@ -16,7 +16,7 @@ class BeerListVC: UIViewController {
     private let refreshControl = UIRefreshControl()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     private let disposeBag = DisposeBag()
-    let viewModel: BeerListViewModel
+    @Inject var viewModel: BeerListViewModel
     
     // MARK: - Table View
     
@@ -28,8 +28,7 @@ class BeerListVC: UIViewController {
     
     // MARK: - Initialization
     
-    init(viewModel: BeerListViewModel) {
-        self.viewModel = viewModel
+    init() {
         super.init(nibName: nil, bundle: nil)
         self.bindViewModel()
     }
@@ -90,17 +89,14 @@ class BeerListVC: UIViewController {
             .bind(to: refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
         
-        viewModel.output.errorRelay
-            .subscribe(onNext: { [weak self] error in
-                self?.showErrorAlert(with: error.message)
-            }).disposed(by: disposeBag)
-        
         tableView.rx.modelSelected(Beer.self)
             .bind(to: viewModel.input.detailTrigger)
             .disposed(by: disposeBag)
         
         tableView.rx.itemSelected
-            .subscribe(onNext: { self.tableView.deselectRow(at: $0, animated: true)})
+            .subscribe(onNext: { [weak self] row in
+                self?.tableView.deselectRow(at: row, animated: true)
+            })
             .disposed(by: disposeBag)
         
         tableView.rx.reachedBottom(offset: 120.0)

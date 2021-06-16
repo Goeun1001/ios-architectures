@@ -35,7 +35,6 @@ class RandomBeerFlow: Flow {
     }
 
     private func navigateToRandomBeerScreen() -> FlowContributors {
-//        let vc = RandomBeerVC()
         self.rootViewController.pushViewController(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: vc.viewModel))
     }

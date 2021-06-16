@@ -15,7 +15,6 @@
 		D91598A126496C1600AB1F56 /* BeerListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91598A026496C1600AB1F56 /* BeerListUseCase.swift */; };
 		D91598A326496CD600AB1F56 /* RandomBeerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91598A226496CD600AB1F56 /* RandomBeerUseCase.swift */; };
 		D91598A526496CDC00AB1F56 /* SearchBeerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91598A426496CDC00AB1F56 /* SearchBeerUseCase.swift */; };
-		D91598A726496EAC00AB1F56 /* AppDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91598A626496EAC00AB1F56 /* AppDI.swift */; };
 		D9227BAD264A57A5004F6841 /* Bundle+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93ECA182642A6EE00851ADA /* Bundle+Decode.swift */; };
 		D9227BAF264A814D004F6841 /* TestDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9227BAE264A814D004F6841 /* TestDI.swift */; };
 		D9227BB7264A963D004F6841 /* TabBarFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9227BB1264A963D004F6841 /* TabBarFlow.swift */; };
@@ -88,7 +87,6 @@
 		D91598A026496C1600AB1F56 /* BeerListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListUseCase.swift; sourceTree = "<group>"; };
 		D91598A226496CD600AB1F56 /* RandomBeerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomBeerUseCase.swift; sourceTree = "<group>"; };
 		D91598A426496CDC00AB1F56 /* SearchBeerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBeerUseCase.swift; sourceTree = "<group>"; };
-		D91598A626496EAC00AB1F56 /* AppDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDI.swift; sourceTree = "<group>"; };
 		D9227BAE264A814D004F6841 /* TestDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDI.swift; sourceTree = "<group>"; };
 		D9227BB1264A963D004F6841 /* TabBarFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarFlow.swift; sourceTree = "<group>"; };
 		D9227BB2264A963D004F6841 /* BeerStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerStep.swift; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 			children = (
 				D9227BBD264A9D4D004F6841 /* Container */,
 				D9F96E38263994190030E1C8 /* AppDelegate.swift */,
-				D91598A626496EAC00AB1F56 /* AppDI.swift */,
 				D9227BB0264A963D004F6841 /* Flow */,
 			);
 			path = Application;
@@ -715,7 +712,6 @@
 				D9F96E6926399E1B0030E1C8 /* Beer.swift in Sources */,
 				D93EC9BD2642809100851ADA /* BeerEntity.swift in Sources */,
 				D9227BBB264A963D004F6841 /* AppFlow.swift in Sources */,
-				D91598A726496EAC00AB1F56 /* AppDI.swift in Sources */,
 				D9F96E39263994190030E1C8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

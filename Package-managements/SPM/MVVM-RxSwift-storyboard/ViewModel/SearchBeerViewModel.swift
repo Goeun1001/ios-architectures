@@ -37,7 +37,9 @@ class SearchBeerViewModel {
             .flatMapLatest { id in
                 networkingApi.request(.searchID(id: Int(id) ?? 0))
                     .trackActivity(activityIndicator)
-                    .do(onError: { self.output.errorRelay.accept($0 as! NetworkingError) })
+                    .do(onError: { [weak self] error in
+                        self?.output.errorRelay.accept(error as! NetworkingError)
+                    })
                     .catchErrorJustReturn([])
             }
             .bind(to: output.beer)

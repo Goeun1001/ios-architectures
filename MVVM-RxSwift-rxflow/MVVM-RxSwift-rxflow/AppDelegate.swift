@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Flows.use(appFlow, when: .created) { root in
             self.window?.rootViewController = root
+            self.window?.backgroundColor = UIColor.white
             self.window?.makeKeyAndVisible()
         }
         return true

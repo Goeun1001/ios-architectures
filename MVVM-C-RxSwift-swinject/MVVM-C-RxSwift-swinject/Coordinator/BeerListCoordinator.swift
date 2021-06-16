@@ -8,22 +8,16 @@
 import UIKit
 
 class BeerListCoordinator: BaseCoordinator {
-    var delegate: dismissBarProtocol?
+    var tabbarCoordinator: TabBarCoordinator?
     
     override func start() {
-        let vc = BeerListVC(coordinator: self)
-        vc.tabBarItem = UITabBarItem(title: "Beer List", image: UIImage(systemName: "1.circle"), tag: 0)
-        self.navigationController.pushViewController(vc, animated: true)
-    }
-    
-    override func didFinish(coordinator: Coordinator) {
-        super.didFinish(coordinator: coordinator)
-        delegate?.dismissBar(false)
+        let vc = UINavigationController(rootViewController: BeerListVC(coordinator: self))
+        self.navigationController = vc
     }
     
     func goDetail(beer: Beer) {
         let vc = DetailBeerVC(coordinator: self, beer: beer)
+        vc.hidesBottomBarWhenPushed = true
         self.navigationController.pushViewController(vc, animated: true)
-        delegate?.dismissBar(true)
     }
 }

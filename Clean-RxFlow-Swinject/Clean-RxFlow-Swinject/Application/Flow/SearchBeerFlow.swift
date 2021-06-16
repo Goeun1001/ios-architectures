@@ -35,7 +35,6 @@ class SearchBeerFlow: Flow {
     }
 
     private func navigateToSearchBeerScreen() -> FlowContributors {
-//        let vc = SearchBeerVC()
         self.rootViewController.pushViewController(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: vc.viewModel))
     }

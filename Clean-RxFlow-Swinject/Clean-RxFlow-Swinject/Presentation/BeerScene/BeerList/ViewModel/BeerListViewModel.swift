@@ -14,7 +14,7 @@ class BeerListViewModel: Stepper {
     
     private var page = 1
     private var disposeBag = DisposeBag()
-    private let beerListUseCase: BeerListUseCase
+    @Inject private var beerListUseCase: BeerListUseCase
     
     // MARK: - ViewModelType
     
@@ -29,14 +29,12 @@ class BeerListViewModel: Stepper {
         let list = BehaviorRelay<[Beer]>(value: [])
         let isLoading = BehaviorRelay<Bool>(value: false)
         let isRefreshing = PublishRelay<Bool>()
-        let errorRelay = PublishRelay<NetworkingError>()
     }
     
     let input = Input()
     let output = Output()
     
-    init(beerListUseCase: BeerListUseCase) {
-        self.beerListUseCase = beerListUseCase
+    init() {
         let activityIndicator = ActivityIndicator()
         let refreshIndicator = ActivityIndicator()
         
@@ -45,8 +43,10 @@ class BeerListViewModel: Stepper {
             .flatMap {
                 self.beerListUseCase.execute(page: self.page)
                     .trackActivity(activityIndicator)
-                    .do(onError: { self.output.errorRelay.accept($0 as! NetworkingError) })
-                    .catchErrorJustReturn([])
+                    .do(onError: { [weak self] error in
+                        let error = error as! NetworkingError
+                        self?.steps.accept(BeerStep.alert(error.message))
+                    })
             }
             .bind(to: self.output.list)
             .disposed(by: disposeBag)
@@ -57,8 +57,10 @@ class BeerListViewModel: Stepper {
             .flatMap {
                 self.beerListUseCase.execute(page: self.page)
                     .trackActivity(refreshIndicator)
-                    .do(onError: { self.output.errorRelay.accept($0 as! NetworkingError) })
-                    .catchErrorJustReturn([])
+                    .do(onError: { [weak self] error in
+                        let error = error as! NetworkingError
+                        self?.steps.accept(BeerStep.alert(error.message))
+                    })
             }
             .bind(to: self.output.list)
             .disposed(by: disposeBag)
@@ -70,8 +72,10 @@ class BeerListViewModel: Stepper {
             .flatMap {
                 self.beerListUseCase.execute(page: self.page)
                     .trackActivity(activityIndicator)
-                    .do(onError: { self.output.errorRelay.accept($0 as! NetworkingError) })
-                    .catchErrorJustReturn([])
+                    .do(onError: { [weak self] error in
+                        let error = error as! NetworkingError
+                        self?.steps.accept(BeerStep.alert(error.message))
+                    })
             }
             .map { self.output.list.value + $0 }
             .bind(to: self.output.list)
@@ -79,8 +83,8 @@ class BeerListViewModel: Stepper {
         
         input.detailTrigger
             .asObservable()
-            .subscribe(onNext: { beer in
-                self.steps.accept(BeerStep.BeerDetailIsPicked(beer: beer))
+            .subscribe(onNext: { [weak self] beer in
+                self?.steps.accept(BeerStep.BeerDetailIsPicked(beer: beer))
             })
             .disposed(by: disposeBag)
         

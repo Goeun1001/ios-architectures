@@ -13,11 +13,7 @@ protocol RandomBeerUseCase {
 }
 
 final class DefaultRandomBeerUseCase: RandomBeerUseCase {
-    private let randomBeerRepository: RandomBeerRepository
-    
-    init(randomBeerRepository: RandomBeerRepository) {
-        self.randomBeerRepository = randomBeerRepository
-    }
+    @Inject private var randomBeerRepository: RandomBeerRepository
     
     func execute() -> Single<[Beer]> {
         return randomBeerRepository.randomBeer()

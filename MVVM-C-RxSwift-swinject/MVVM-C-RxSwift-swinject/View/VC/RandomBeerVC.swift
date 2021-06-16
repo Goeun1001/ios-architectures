@@ -15,7 +15,7 @@ class RandomBeerVC: UIViewController {
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     
     private let disposeBag = DisposeBag()
-    private let viewModel = RandomBeerViewModel()
+    @Inject private var viewModel: RandomBeerViewModel
     
     private let coordinator: RandomBeerCoordinator
     

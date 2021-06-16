@@ -15,12 +15,11 @@ class SearchBeerVC: UIViewController {
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     
     private let disposeBag = DisposeBag()
-    let viewModel: SearchBeerViewModel
+    @Inject var viewModel: SearchBeerViewModel
     
     // MARK: - Initialization
     
-    init(viewModel: SearchBeerViewModel) {
-        self.viewModel = viewModel
+    init() {
         super.init(nibName: nil, bundle: nil)
         self.bindViewModel()
     }
@@ -84,11 +83,6 @@ class SearchBeerVC: UIViewController {
         viewModel.output.isLoading
             .bind(to: activityIndicator.rx.isAnimating)
             .disposed(by: disposeBag)
-        
-        viewModel.output.errorRelay
-            .subscribe(onNext: { [weak self] error in
-                self?.showErrorAlert(with: error.message)
-            }).disposed(by: disposeBag)
         
         searchController.searchBar.rx.searchButtonClicked
             .subscribe(onNext: { [weak self] _ in

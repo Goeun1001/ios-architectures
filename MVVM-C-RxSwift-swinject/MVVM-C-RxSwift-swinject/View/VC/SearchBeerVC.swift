@@ -15,7 +15,7 @@ class SearchBeerVC: UIViewController {
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     
     private let disposeBag = DisposeBag()
-    private let viewModel = SearchBeerViewModel()
+    @Inject private var viewModel: SearchBeerViewModel
     
     private let coordinator: SearchBeerCoordinator
     

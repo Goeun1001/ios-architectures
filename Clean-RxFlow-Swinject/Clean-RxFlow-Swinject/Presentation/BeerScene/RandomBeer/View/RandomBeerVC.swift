@@ -15,7 +15,7 @@ class RandomBeerVC: UIViewController {
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     
     private let disposeBag = DisposeBag()
-    let viewModel: RandomBeerViewModel
+    @Inject var viewModel: RandomBeerViewModel
     
     private let randomButton = UIButton().then {
         $0.setTitle("Roll Random", for: .normal)
@@ -24,8 +24,7 @@ class RandomBeerVC: UIViewController {
     
     // MARK: - Initialization
     
-    init(viewModel: RandomBeerViewModel) {
-        self.viewModel = viewModel
+    init() {
         super.init(nibName: nil, bundle: nil)
         self.bindViewModel()
     }
@@ -91,10 +90,5 @@ class RandomBeerVC: UIViewController {
         viewModel.output.isLoading
             .bind(to: activityIndicator.rx.isAnimating)
             .disposed(by: disposeBag)
-        
-        viewModel.output.errorRelay
-            .subscribe(onNext: { [weak self] error in
-                self?.showErrorAlert(with: error.message)
-            }).disposed(by: disposeBag)
     }
 }

@@ -13,11 +13,7 @@ protocol BeerListUseCase {
 }
 
 final class DefaultBeerListUseCase: BeerListUseCase {
-    private let beerListRepository: BeerListRepository
-    
-    init(beerListRepository: BeerListRepository) {
-        self.beerListRepository = beerListRepository
-    }
+    @Inject private var beerListRepository: BeerListRepository
     
     func execute(page: Int) -> Single<[Beer]> {
         return beerListRepository.getBeerList(page: page)

@@ -11,7 +11,7 @@
 		901371200AC4330255FCEEB7 /* Pods_MVVM_C_RxSwift_MVVM_C_RxSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E807E196C4A6DE0AFF6877CA /* Pods_MVVM_C_RxSwift_MVVM_C_RxSwiftTests.framework */; };
 		D93EC8A72641575000851ADA /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC8A62641575000851ADA /* BaseCoordinator.swift */; };
 		D93EC8C126415E7500851ADA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC8C026415E7500851ADA /* AppCoordinator.swift */; };
-		D93EC8C526415F4E00851ADA /* TabBarCoordinatorr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC8C426415F4E00851ADA /* TabBarCoordinatorr.swift */; };
+		D93EC8C526415F4E00851ADA /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC8C426415F4E00851ADA /* TabBarCoordinator.swift */; };
 		D93EC8C92641600500851ADA /* BeerListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC8C82641600500851ADA /* BeerListCoordinator.swift */; };
 		D93EC8CD264160C500851ADA /* SearchBeerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC8CC264160C500851ADA /* SearchBeerCoordinator.swift */; };
 		D93EC8D726417FC000851ADA /* RandomBeerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93EC8D626417FC000851ADA /* RandomBeerCoordinator.swift */; };
@@ -25,7 +25,6 @@
 		D9F96E61263998350030E1C8 /* BeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F96E5F263998350030E1C8 /* BeerTableViewCell.swift */; };
 		D9F96E6926399E1B0030E1C8 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F96E6826399E1B0030E1C8 /* Beer.swift */; };
 		D9F96E83263A2F210030E1C8 /* BeerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F96E82263A2F210030E1C8 /* BeerView.swift */; };
-		D9F96E9A263A31D40030E1C8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F96E99263A31D40030E1C8 /* TabBarController.swift */; };
 		D9F96EE3263A7F760030E1C8 /* BeerListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F96EE2263A7F760030E1C8 /* BeerListTests.swift */; };
 		D9F96EFD263A80970030E1C8 /* BeerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F96EFC263A80970030E1C8 /* BeerListViewModel.swift */; };
 		D9F96F04263A80E40030E1C8 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F96F03263A80E40030E1C8 /* ActivityIndicator.swift */; };
@@ -60,7 +59,7 @@
 		99D27F985B8D94762414E48B /* Pods-MVVM-C-RxSwift-MVVM-C-RxSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-C-RxSwift-MVVM-C-RxSwiftTests.debug.xcconfig"; path = "Target Support Files/Pods-MVVM-C-RxSwift-MVVM-C-RxSwiftTests/Pods-MVVM-C-RxSwift-MVVM-C-RxSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D93EC8A62641575000851ADA /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		D93EC8C026415E7500851ADA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		D93EC8C426415F4E00851ADA /* TabBarCoordinatorr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinatorr.swift; sourceTree = "<group>"; };
+		D93EC8C426415F4E00851ADA /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		D93EC8C82641600500851ADA /* BeerListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListCoordinator.swift; sourceTree = "<group>"; };
 		D93EC8CC264160C500851ADA /* SearchBeerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBeerCoordinator.swift; sourceTree = "<group>"; };
 		D93EC8D626417FC000851ADA /* RandomBeerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomBeerCoordinator.swift; sourceTree = "<group>"; };
@@ -76,7 +75,6 @@
 		D9F96E5F263998350030E1C8 /* BeerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewCell.swift; sourceTree = "<group>"; };
 		D9F96E6826399E1B0030E1C8 /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
 		D9F96E82263A2F210030E1C8 /* BeerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerView.swift; sourceTree = "<group>"; };
-		D9F96E99263A31D40030E1C8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D9F96EE0263A7F760030E1C8 /* MVVM-C-RxSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MVVM-C-RxSwiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F96EE2263A7F760030E1C8 /* BeerListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListTests.swift; sourceTree = "<group>"; };
 		D9F96EE4263A7F760030E1C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -146,7 +144,7 @@
 				D93EC8C82641600500851ADA /* BeerListCoordinator.swift */,
 				D93EC8CC264160C500851ADA /* SearchBeerCoordinator.swift */,
 				D93EC8D626417FC000851ADA /* RandomBeerCoordinator.swift */,
-				D93EC8C426415F4E00851ADA /* TabBarCoordinatorr.swift */,
+				D93EC8C426415F4E00851ADA /* TabBarCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -213,7 +211,6 @@
 				D9F96E54263996290030E1C8 /* BeerListVC.swift */,
 				D9F96E58263996360030E1C8 /* RandomBeerVC.swift */,
 				D9F96E5B263996460030E1C8 /* SearchBeerVC.swift */,
-				D9F96E99263A31D40030E1C8 /* TabBarController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -452,7 +449,7 @@
 				D9F96E5C263996460030E1C8 /* SearchBeerVC.swift in Sources */,
 				D9F96F4E263AB7DF0030E1C8 /* BeerListSection.swift in Sources */,
 				D9F96E61263998350030E1C8 /* BeerTableViewCell.swift in Sources */,
-				D93EC8C526415F4E00851ADA /* TabBarCoordinatorr.swift in Sources */,
+				D93EC8C526415F4E00851ADA /* TabBarCoordinator.swift in Sources */,
 				D93EC8CD264160C500851ADA /* SearchBeerCoordinator.swift in Sources */,
 				D93EC8A72641575000851ADA /* BaseCoordinator.swift in Sources */,
 				D9F96E83263A2F210030E1C8 /* BeerView.swift in Sources */,
@@ -469,7 +466,6 @@
 				D9F96F04263A80E40030E1C8 /* ActivityIndicator.swift in Sources */,
 				D9F96F12263A81AD0030E1C8 /* SearchBeerViewModel.swift in Sources */,
 				D99053E2263FCD7800DC5402 /* NetworkingService.swift in Sources */,
-				D9F96E9A263A31D40030E1C8 /* TabBarController.swift in Sources */,
 				D9F96E55263996290030E1C8 /* BeerListVC.swift in Sources */,
 				D9F96E6926399E1B0030E1C8 /* Beer.swift in Sources */,
 				D9F96E39263994190030E1C8 /* AppDelegate.swift in Sources */,

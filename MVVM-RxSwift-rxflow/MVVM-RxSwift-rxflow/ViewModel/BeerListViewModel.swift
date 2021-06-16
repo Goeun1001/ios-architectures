@@ -29,7 +29,6 @@ class BeerListViewModel: Stepper {
         let list = BehaviorRelay<[Beer]>(value: [])
         let isLoading = BehaviorRelay<Bool>(value: false)
         let isRefreshing = PublishRelay<Bool>()
-        let errorRelay = PublishRelay<Error>()
     }
     
     let input = Input()
@@ -45,10 +44,8 @@ class BeerListViewModel: Stepper {
             .flatMapLatest {
                 networkingApi.request(.getBeerList(page: self.page))
                     .trackActivity(activityIndicator)
-                    .do(onError: { error in
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1)  {
-                            self.steps.accept(BeerStep.alert(error.localizedDescription))
-                        }
+                    .do(onError: { [weak self] error in
+                        self?.steps.accept(BeerStep.alert(error.localizedDescription))
                     })
                     .catchErrorJustReturn([])
             }
@@ -57,14 +54,15 @@ class BeerListViewModel: Stepper {
         
         input.refreshTrigger
             .asObservable()
-            .map { self.page = 1 }
+            .map { [weak self] _ in
+                self?.page = 1
+            }
             .flatMapLatest {
                 networkingApi.request(.getBeerList(page: self.page))
                     .trackActivity(refreshIndicator)
-                    .do(onError: {
-                        self.steps.accept(BeerStep.alert($0.localizedDescription))
+                    .do(onError: { [weak self] error in
+                        self?.steps.accept(BeerStep.alert(error.localizedDescription))
                     })
-                    .catchErrorJustReturn([])
             }
             .bind(to: output.list)
             .disposed(by: disposeBag)
@@ -72,12 +70,15 @@ class BeerListViewModel: Stepper {
         
         input.nextPageTrigger
             .asObservable()
-            .map { self.page += 1 }
+            .map { [weak self] _ in
+                self?.page += 1
+            }
             .flatMapLatest {
                 networkingApi.request(.getBeerList(page: self.page))
                     .trackActivity(activityIndicator)
-                    .do(onError: { self.output.errorRelay.accept($0) })
-                    .catchErrorJustReturn([])
+                    .do(onError: { [weak self] error in
+                        self?.steps.accept(BeerStep.alert(error.localizedDescription))
+                    })
             }
             .map { self.output.list.value + $0 }
             .bind(to: output.list)

@@ -13,7 +13,7 @@ class RandomBeerViewModel: Stepper {
     let steps = PublishRelay<Step>()
     
     private let disposeBag = DisposeBag()
-    private let randomBeerUseCase: RandomBeerUseCase
+    @Inject private var randomBeerUseCase: RandomBeerUseCase
     
     // MARK: - ViewModelType
     
@@ -24,23 +24,23 @@ class RandomBeerViewModel: Stepper {
     struct Output {
         let beer = BehaviorRelay<[Beer]>(value: [])
         let isLoading = BehaviorRelay<Bool>(value: false)
-        let errorRelay = PublishRelay<NetworkingError>()
     }
     
     let input = Input()
     let output = Output()
     
-    init(randomBeerUseCase: RandomBeerUseCase) {
-        self.randomBeerUseCase = randomBeerUseCase
+    init() {
         let activityIndicator = ActivityIndicator()
         
         input.buttonTrigger
             .asObservable()
             .flatMapLatest {
-                randomBeerUseCase.execute()
+                self.randomBeerUseCase.execute()
                     .trackActivity(activityIndicator)
-                    .do(onError: { self.output.errorRelay.accept($0 as! NetworkingError) })
-                    .catchErrorJustReturn([])
+                    .do(onError: { [weak self] error in
+                        let error = error as! NetworkingError
+                        self?.steps.accept(BeerStep.alert(error.message))
+                    })
             }
             .bind(to: output.beer)
             .disposed(by: disposeBag)

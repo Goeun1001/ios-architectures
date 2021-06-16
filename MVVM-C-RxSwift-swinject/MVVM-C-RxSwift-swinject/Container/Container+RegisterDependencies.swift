@@ -23,6 +23,7 @@ extension Container {
     }
     
     func registerViewModels() {
+        autoregister(NetworkingService.self, initializer: NetworkingAPI.init as () -> NetworkingAPI)
         autoregister(BeerListViewModel.self, initializer: BeerListViewModel.init)
         autoregister(RandomBeerViewModel.self, initializer: RandomBeerViewModel.init)
         autoregister(SearchBeerViewModel.self, initializer: SearchBeerViewModel.init)

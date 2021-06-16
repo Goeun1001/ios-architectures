@@ -7,6 +7,10 @@
 
 import UIKit
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
+    @Inject private var listVC: BeerListVC
+    @Inject private var searchVC: SearchBeerVC
+    @Inject private var randomVC: RandomBeerVC
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
@@ -14,13 +18,8 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
 
     private func configureTabBarItems() {
-        let listVC = AppDI.shared.getBeerListVC()
         listVC.tabBarItem = UITabBarItem(title: "Beer List", image: UIImage(systemName: "1.circle"), tag: 0)
-
-        let searchVC = AppDI.shared.getSearchBeerVC()
         searchVC.tabBarItem = UITabBarItem(title: "Search ID", image: UIImage(systemName: "2.circle"), tag: 1)
-        
-        let randomVC = AppDI.shared.getRandomBeerVC()
         randomVC.tabBarItem = UITabBarItem(title: "Random", image: UIImage(systemName: "3.circle"), tag: 2)
 
         let listNavigationVC = UINavigationController(rootViewController: listVC)

@@ -24,7 +24,6 @@ class RandomBeerViewModel: Stepper {
     struct Output {
         let beer = BehaviorRelay<[Beer]>(value: [])
         let isLoading = BehaviorRelay<Bool>(value: false)
-        let errorRelay = PublishRelay<Error>()
     }
     
     let input = Input()
@@ -39,8 +38,9 @@ class RandomBeerViewModel: Stepper {
             .flatMapLatest {
                 networkingApi.request(.random)
                     .trackActivity(activityIndicator)
-                    .do(onError: { self.steps.accept(BeerStep.alert($0.localizedDescription)) })
-                    .catchErrorJustReturn([])
+                    .do(onError: { [weak self] error in
+                        self?.steps.accept(BeerStep.alert(error.localizedDescription))
+                    })
             }
             .bind(to: output.beer)
             .disposed(by: disposeBag)
