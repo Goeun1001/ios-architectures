@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NetworkingAPI.h"
+#import "DetailBeerVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

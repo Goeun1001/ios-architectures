@@ -53,4 +53,4 @@ First, the View must own the Presenter, and the Presenter must update the View a
 
 ### Reference
 
-- [[iOS] MVC, MVP, MVVM 비교](
+- [[iOS] MVC, MVP, MVVM 비교](https://beomy.tistory.com/43)

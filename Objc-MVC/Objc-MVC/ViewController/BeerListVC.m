@@ -92,6 +92,16 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DetailBeerVC* vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DetailBeerVC"];
+    printf("%s", vc);
+    vc.beer = [beers objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
+//    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailBeerVC") as! DetailBeerVC
+//    vc.beer = beers[indexPath.row]
+//    self.navigationController?.pushViewController(vc, animated: true)
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView.contentOffset.y >= 1800 * [self page]) {

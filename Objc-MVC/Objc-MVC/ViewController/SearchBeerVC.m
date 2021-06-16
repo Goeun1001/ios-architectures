@@ -36,19 +36,6 @@
     searchController.searchResultsUpdater = self;
     searchController.searchBar.keyboardType = UIKeyboardTypeNumberPad;
     self.navigationItem.searchController = searchController;
-    //    self.definesPresentationContext = YES;
-    //    self.searchController = UISearchController(searchResultsController:  nil)
-    //
-    //           self.searchController.searchResultsUpdater = self
-    //           self.searchController.delegate = self
-    //           self.searchController.searchBar.delegate = self
-    //
-    //           self.searchController.hidesNavigationBarDuringPresentation = false
-    //           self.searchController.dimsBackgroundDuringPresentation = true
-    //
-    //           self.navigationItem.titleView = searchController.searchBar
-    //
-    //           self.definesPresentationContext = true
 }
 
 - (void) searchData: (int) _id {
@@ -66,16 +53,21 @@
     [[self nameLabel] setText:[beer name]];
     [[self descLabel] setText:[beer desc]];
     
-    UIImage *image = [[CacheManager sharedInstance] getCachedImageForKey: [beer imageURL]];
-    if(image)
-    {
-        [[self beerImageView] setImage: image];
-    } else {
-        NSURL *imageURL = [NSURL URLWithString: [beer imageURL]];
-        UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:imageURL]];
+    if ([[beer imageURL] isKindOfClass:[NSString class]]) {
+        UIImage *image = [[CacheManager sharedInstance] getCachedImageForKey: [beer imageURL]];
         
-        [[CacheManager sharedInstance] cacheImage:image forKey: [beer imageURL]];
-        [[self beerImageView] setImage: image];
+        if(image)
+        {
+            [[self beerImageView] setImage: image];
+        } else {
+            NSURL *imageURL = [NSURL URLWithString: [beer imageURL]];
+            UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:imageURL]];
+            
+            [[CacheManager sharedInstance] cacheImage:image forKey: [beer imageURL]];
+            [[self beerImageView] setImage: image];
+        }
+    } else {
+        [[self beerImageView] setImage: nil];
     }
 }
 

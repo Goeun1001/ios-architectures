@@ -308,7 +308,7 @@
         <!--Detail BeerVC-->
         <scene sceneID="rjx-Gw-WDZ">
             <objects>
-                <viewController storyboardIdentifier="DetailBeerVC" id="Y0w-Sx-301" customClass="DetailBeerVC" customModule="Objc_MVC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailBeerVC" id="Y0w-Sx-301" customClass="DetailBeerVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wLX-C5-cYK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

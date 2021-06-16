@@ -19,16 +19,21 @@
     [[self nameLabel] setText:[beer name]];
     [[self descLabel] setText:[beer desc]];
     
-    UIImage *image = [[CacheManager sharedInstance] getCachedImageForKey: [beer imageURL]];
-    if(image)
-    {
-        [[self beerImageView] setImage: image];
-    } else {
-        NSURL *imageURL = [NSURL URLWithString: [beer imageURL]];
-        UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:imageURL]];
+    if ([[beer imageURL] isKindOfClass:[NSString class]]) {
+        UIImage *image = [[CacheManager sharedInstance] getCachedImageForKey: [beer imageURL]];
         
-        [[CacheManager sharedInstance] cacheImage:image forKey: [beer imageURL]];
-        [[self beerImageView] setImage: image];
+        if(image)
+        {
+            [[self beerImageView] setImage: image];
+        } else {
+            NSURL *imageURL = [NSURL URLWithString: [beer imageURL]];
+            UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:imageURL]];
+            
+            [[CacheManager sharedInstance] cacheImage:image forKey: [beer imageURL]];
+            [[self beerImageView] setImage: image];
+        }
+    } else {
+        [[self beerImageView] setImage: nil];
     }
 }
 

@@ -1,5 +1,11 @@
 # iOS Architectures
 
+## Docs
+
+- [Docs](https://github.com/Goeun1001/ios-architectures/tree/master/Docs)
+
+
+
 ## API
 
 - [Beer API](https://punkapi.com/documentation/v2)
@@ -58,8 +64,6 @@ UI - Storyboard
 Image - NSCache
 
 Network - NSData to Json
-
-❗️I don't know how to make 'Beer' nullable...
 
 
 
@@ -184,7 +188,7 @@ Repositoy Pattern - CoreData
 
 Unit Tests 👌 - RxTest, Nimble
 
-❗️ **Bug** : If the simulator saves more than 1 page of beer list in CoreData, CoreDataManagerTest's randomTests fails. If you know a solution, Please PR.
+
 
 ## 5-2. [MVVM - RxSwift - realm](https://github.com/Goeun1001/ios-architectures/tree/master/MVVM-RxSwift-realm)
 
@@ -212,7 +216,7 @@ Unit Tests 👌 - RxTest, Nimble
 
 ## 5-4. [Clean Architecture - MVVM - RxSwift - coredata](https://github.com/Goeun1001/ios-architectures/tree/master/Clean-MVVM)
 
-❗️ **Bug** : CoreDataTests same.
+5-1. [MVVM - RxSwift - coreData](https://github.com/Goeun1001/ios-architectures/tree/master/MVVM-RxSwift-coreData) to Clean Architecture
 
 
 
@@ -258,8 +262,6 @@ Unit Tests 👌 - RxTest
 
 ❗️ **Alert** : I used **' DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) '** Because If tabbarflow does not navigate to a total of 3 flows, it cannot navigate to an alert. If you know a better solution, please PR!
 
-❗️ **Bug** : CoreDataTests same.
-
 ## 8. [ReactorKit - RxFlow](https://github.com/Goeun1001/ios-architectures/tree/master/ReactorKit-RxFlow)
 
 UI - SnapKit, Then, RxDatasource
@@ -268,7 +270,7 @@ Network - Moya
 
 Unit Tests 👌
 
-❗️ **Alert** : I used **' DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) '** Because If tabbarflow does not navigate to a total of 3 flows, it cannot navigate to an alert. If you know a better solution, ㅇ
+❗️ **Alert** : I used **' DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) '** Because If tabbarflow does not navigate to a total of 3 flows, it cannot navigate to an alert. If you know a better solution,
 
 
 

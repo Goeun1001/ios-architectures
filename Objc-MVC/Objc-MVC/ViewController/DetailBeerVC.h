@@ -6,10 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Beer.h"
+#import "CacheManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DetailBeerVC : UIViewController
+
+@property Beer *beer;
 
 @end
 
