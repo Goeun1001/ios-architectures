@@ -11,12 +11,15 @@ import RxCocoa
 
 protocol BeerListRouting: ViewableRouting {
     func showAlert(string: String)
+    func attachBeerDetailRIB(beer: Beer)
+    func detachBeerDetailRIB()
 }
 
 protocol BeerListPresentableInput: AnyObject {
     var viewLoadTrigger: Observable<Void> { get }
     var refreshTrigger: Observable<Void> { get }
     var nextPageTrigger: Observable<Void> { get }
+    var goDetailTrigger: Observable<Beer> { get }
 }
 
 protocol BeerListPresentableOutput: AnyObject {
@@ -34,7 +37,6 @@ protocol BeerListPresentable: Presentable {
 }
 
 protocol BeerListListener: AnyObject {
-    func goDetailBeer(beer: Beer)
 }
 
 final class BeerListInteractor: PresentableInteractor<BeerListPresentable>, BeerListInteractable, BeerListPresentableListener {
@@ -100,6 +102,11 @@ final class BeerListInteractor: PresentableInteractor<BeerListPresentable>, Beer
             .bind(to: self.beerListRelay)
             .disposed(by: disposeBag)
         
+        input.goDetailTrigger
+            .subscribe(onNext: { [weak self] beer in
+                self?.router?.attachBeerDetailRIB(beer: beer)
+            }).disposed(by: disposeBag)
+        
         activityIndicator
             .asObservable()
             .bind(to: self.isLoadingRelay)
@@ -110,11 +117,15 @@ final class BeerListInteractor: PresentableInteractor<BeerListPresentable>, Beer
             .bind(to: self.isRefreshingRelay)
             .disposed(by: disposeBag)
     }
-    
-    func goDetailBeer(beer: Beer) {
-        listener?.goDetailBeer(beer: beer)
+}
+
+// MARK: - DetailBeerListener
+extension BeerListInteractor {
+    func detachDetailBeerRIB() {
+        router?.detachBeerDetailRIB()
     }
 }
+
 
 extension BeerListInteractor: BeerListPresentableOutput {
     var list: BehaviorRelay<[Beer]> { return beerListRelay }

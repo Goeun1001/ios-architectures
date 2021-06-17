@@ -75,7 +75,7 @@ class BeerListVC: UIViewController, View {
     }
     
     private func bindAction(reactor: Reactor) {
-        self.rx.viewWillAppear.map{ _ in Void()         }
+        self.rx.viewWillAppear.map{ _ in Void() }
             .map { Reactor.Action.viewWillAppear }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)

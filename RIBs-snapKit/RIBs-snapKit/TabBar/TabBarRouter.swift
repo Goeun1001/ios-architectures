@@ -80,8 +80,8 @@ final class TabBarRouter: LaunchRouter<TabBarInteractable, TabBarViewControllabl
     }
     
     func goDetailBeer(beer: Beer) {
-        let detailBeerVC = DetailBeerViewController(beer: beer)
-        listNavigationVC!.pushViewController(detailBeerVC, animated: true)
+//        let detailBeerVC = DetailBeerViewController(beer: beer)
+//        listNavigationVC!.pushViewController(detailBeerVC, animated: true)
     }
     
 }

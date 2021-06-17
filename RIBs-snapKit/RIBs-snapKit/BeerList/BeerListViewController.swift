@@ -13,11 +13,9 @@ import RxDataSources
 import SnapKit
 
 protocol BeerListPresentableListener: AnyObject {
-    func goDetailBeer(beer: Beer)
 }
 
 final class BeerListViewController: UIViewController, BeerListPresentable, BeerListViewControllable {
-    
     weak var listener: BeerListPresentableListener?
     
     private let tableView = UITableView()
@@ -77,6 +75,15 @@ final class BeerListViewController: UIViewController, BeerListPresentable, BeerL
         self.navigationItem.title = "BeerList"
         self.navigationItem.accessibilityLabel = "BeerList"
     }
+    
+    func pushViewController(_ viewController: ViewControllable, animated: Bool) {
+        viewController.uiviewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController.uiviewController, animated: animated)
+    }
+    
+    func popViewController(animated: Bool) {
+        self.navigationController?.popViewController(animated: animated)
+    }
 }
 
 extension BeerListViewController: BeerListPresentableInput {
@@ -90,6 +97,10 @@ extension BeerListViewController: BeerListPresentableInput {
     
     var nextPageTrigger: Observable<Void> {
         return tableView.rx.reachedBottom(offset: 120.0).asObservable()
+    }
+    
+    var goDetailTrigger: Observable<Beer> {
+        return tableView.rx.modelSelected(Beer.self).asObservable()
     }
 }
 
@@ -110,11 +121,6 @@ extension BeerListViewController {
         output.isRefreshing
             .bind(to: refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
-        
-        tableView.rx.modelSelected(Beer.self)
-            .subscribe(onNext: { [weak self] beer in
-                self?.listener?.goDetailBeer(beer: beer)
-            }).disposed(by: disposeBag)
         
         tableView.rx.itemSelected
             .subscribe(onNext: { self.tableView.deselectRow(at: $0, animated: true)})

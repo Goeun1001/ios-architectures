@@ -7,7 +7,7 @@
 
 import RIBs
 
-protocol BeerListDependency: Dependency {
+protocol BeerListDependency: Dependency, DetailBeerDependency {
     // TODO: Declare the set of dependencies required by this RIB, but cannot be
     // created by this RIB.
 }
@@ -33,6 +33,7 @@ final class BeerListBuilder: Builder<BeerListDependency>, BeerListBuildable {
         let viewController = BeerListViewController()
         let interactor = BeerListInteractor(presenter: viewController)
         interactor.listener = listener
-        return BeerListRouter(interactor: interactor, viewController: viewController)
+        let detailBeerBuilder = DetailBeerBuilder(dependency: dependency)
+        return BeerListRouter(detailBeerBuilder: detailBeerBuilder, interactor: interactor, viewController: viewController)
     }
 }

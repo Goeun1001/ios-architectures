@@ -13,13 +13,6 @@ protocol TabBarDependency: Dependency {
 }
 
 final class TabBarComponent: Component<TabBarDependency> {
-    let rootViewController: TabBarViewController
-
-    init(dependency: TabBarDependency,
-         rootViewController: TabBarViewController) {
-        self.rootViewController = rootViewController
-        super.init(dependency: dependency)
-    }
 }
 
 extension TabBarComponent: BeerListDependency, RandomBeerDependency, SearchBeerDependency {}
@@ -28,28 +21,27 @@ extension TabBarComponent: BeerListDependency, RandomBeerDependency, SearchBeerD
 // MARK: - Builder
 
 protocol TabBarBuildable: Buildable {
-    func build() -> LaunchRouting
+    func build(withListener listener: TabBarListener) -> TabBarRouting
 }
 
 final class TabBarBuilder: Builder<TabBarDependency>, TabBarBuildable {
-
+    
     override init(dependency: TabBarDependency) {
         super.init(dependency: dependency)
     }
-
-    func build() -> LaunchRouting {
+    
+    func build(withListener listener: TabBarListener) -> TabBarRouting {
         let viewController = TabBarViewController()
-        let component = TabBarComponent(dependency: dependency,
-                                      rootViewController: viewController)
+        let component = TabBarComponent(dependency: dependency)
         let interactor = TabBarInteractor(presenter: viewController)
-
+        
         let beerListBuilder = BeerListBuilder(dependency: component)
         let randomBeerBuilder = RandomBeerBuilder(dependency: component)
         let searchBeerBuilder = SearchBeerBuilder(dependency: component)
         return TabBarRouter(interactor: interactor,
-                          viewController: viewController,
-                          beerListBuilder: beerListBuilder,
-                          randomBeerBuilder: randomBeerBuilder,
-                          searchBeerBuilder: searchBeerBuilder)
+                            viewController: viewController,
+                            beerListBuilder: beerListBuilder,
+                            randomBeerBuilder: randomBeerBuilder,
+                            searchBeerBuilder: searchBeerBuilder)
     }
 }
