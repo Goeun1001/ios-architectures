@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import Introspect
 
 struct BeerListView: View {
     @State var beers: [Beer] = .init()
@@ -16,6 +17,7 @@ struct BeerListView: View {
     @State var errorMessage = ""
     
     let networkingApi = NetworkingAPI()
+    let refreshHelper = RefreshHelper()
     
     var body: some View {
         NavigationView {
@@ -35,6 +37,15 @@ struct BeerListView: View {
                     }
                     
                 }.listStyle(PlainListStyle())
+                .introspectTableView { scrollView in
+                    
+                    let refreshControl = UIRefreshControl()
+                    refreshControl.addTarget(refreshHelper, action: #selector(refreshHelper.refresh), for: .valueChanged)
+                    scrollView.refreshControl = refreshControl
+                    refreshHelper.refreshControl = refreshControl
+                    refreshHelper.getBeerList = self.getBeerList
+                }
+                
                 ActivityIndicator(isAnimating: $isLoading, style: .large)
             }
             
@@ -58,6 +69,7 @@ struct BeerListView: View {
     
     func getBeerList() {
         self.isLoading = true
+        self.page = 1
         networkingApi.request(.getBeerList(page: page)) { result in
             switch result {
             case let .success(beers):
@@ -82,6 +94,18 @@ struct BeerListView: View {
             }
         }
         self.isLoading = false
+    }
+    
+}
+
+class RefreshHelper {
+    var getBeerList: ()-> () = { print("ERROR") }
+    var refreshControl: UIRefreshControl?
+    
+    @objc func refresh() {
+        refreshControl?.beginRefreshing()
+        getBeerList()
+        refreshControl?.endRefreshing()
     }
 }
 

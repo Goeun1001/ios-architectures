@@ -79,7 +79,6 @@ class BeerListViewModel: ObservableObject {
             .store(in: &bag)
 
         beerListSubject
-            .map { if self.page > 1 { return self.beers + $0 } else { return $0 } }
             .assign(to: \.beers, on: self)
             .store(in: &bag)
 
@@ -99,7 +98,7 @@ class BeerListViewModel: ObservableObject {
             .store(in: &bag)
     }
     
-    @objc func refresh() {
+    func refresh() {
         self.refreshControl?.beginRefreshing()
         self.page = 1
         getBeerListSubject.send(())

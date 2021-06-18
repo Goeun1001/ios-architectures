@@ -1,21 +1,20 @@
 //
-//  BeerListViewModel.swift
+//  SearchBeerViewModel.swift
 //  SwiftUI-MV
 //
 //  Created by GoEun Jeong on 2021/05/13.
 //
 
 import Combine
-import UIKit
+import Foundation
 
-class BeerListViewModel: ObservableObject {
-    @Published var beers: [Beer] = .init()
-    @Published var page = 1
+class SearchBeerViewModel: ObservableObject {
+    @Published var beer = Beer(id: nil, name: "Please Search Beer By ID", description: nil, imageURL: nil)
+    @Published var text = ""
+    @Published var isEditing = false
     @Published var isLoading = false
     @Published var isErrorAlert = false
     @Published var errorMessage = ""
-    
-    var refreshControl : UIRefreshControl?
 
     private var bag = Set<AnyCancellable>()
     let networkingApi: NetworkingService
@@ -33,35 +32,35 @@ class BeerListViewModel: ObservableObject {
     // MARK: Input
 
     enum Input {
-        case getBeerList
+        case search
     }
 
-    private let getBeerListSubject = PassthroughSubject<Void, Never>()
+    private let searchSubject = PassthroughSubject<Int, Never>()
 
-    private let beerListSubject = PassthroughSubject<[Beer], Never>()
+    private let beerSubject = PassthroughSubject<[Beer], Never>()
     private let isLoadingSubject = PassthroughSubject<Bool, Never>()
     private let errorSubject = PassthroughSubject<Error, Never>()
 
     func apply(_ input: Input) {
         switch input {
-        case .getBeerList:
-            getBeerListSubject.send(())
+        case .search:
+            searchSubject.send(Int(text) ?? 0)
         }
     }
 
     func bindInputs() {
-        getBeerListSubject
-            .flatMap { [networkingApi] _ in
-                networkingApi.request(.getBeerList(page: self.page))
+        searchSubject
+            .flatMap { [networkingApi] id in
+                networkingApi.request(.searchID(id: id))
                     .catch { [weak self] error -> Empty<[Beer], Never> in
                         self?.errorSubject.send(error)
                         return .init()
                     }
             }.share()
-            .subscribe(beerListSubject)
+            .subscribe(beerSubject)
             .store(in: &bag)
 
-        getBeerListSubject
+        searchSubject
             .map { _ in true }
             .share()
             .subscribe(isLoadingSubject)
@@ -73,14 +72,14 @@ class BeerListViewModel: ObservableObject {
             .assign(to: \.isLoading, on: self)
             .store(in: &bag)
 
-        beerListSubject
+        beerSubject
             .map { _ in false }
             .assign(to: \.isLoading, on: self)
             .store(in: &bag)
 
-        beerListSubject
-            .map { if self.page > 1 { return self.beers + $0 } else { return $0 } }
-            .assign(to: \.beers, on: self)
+        beerSubject
+            .map { $0.first! }
+            .assign(to: \.beer, on: self)
             .store(in: &bag)
 
         errorSubject
@@ -97,19 +96,5 @@ class BeerListViewModel: ObservableObject {
             .map { $0.localizedDescription }
             .assign(to: \.errorMessage, on: self)
             .store(in: &bag)
-    }
-    
-    @objc func refresh() {
-        self.refreshControl?.beginRefreshing()
-        self.page = 1
-        getBeerListSubject.send(())
-        self.refreshControl?.endRefreshing()
-    }
-
-    func checkNextPage(id: Int) {
-        if id == page * 25 {
-            page += 1
-            apply(.getBeerList)
-        }
     }
 }

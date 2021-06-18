@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import Introspect
 
 struct BeerListView: View {
     @ObservedObject var viewModel = BeerListViewModel()
@@ -29,6 +30,13 @@ struct BeerListView: View {
                     }
                     
                 }.listStyle(PlainListStyle())
+                .introspectTableView { scrollView in
+                    let refresh = UIRefreshControl()
+                    refresh.addTarget(viewModel, action: #selector(viewModel.refresh), for: .valueChanged)
+                    scrollView.refreshControl = refresh
+                    viewModel.refreshControl = refresh
+                }
+                
                 ActivityIndicator(isAnimating: $viewModel.isLoading, style: .large)
             }
             

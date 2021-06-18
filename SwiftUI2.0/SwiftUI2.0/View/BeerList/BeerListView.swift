@@ -15,28 +15,34 @@ struct BeerListView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                List {
-                    ForEach(viewModel.beers, id: \.id) { beer in
-                        ZStack {
-                            BeerListRow(beer: beer)
-                                .onAppear {
-                                    viewModel.checkNextPage(id: beer.id ?? 0)
-                                }
-                            NavigationLink(
-                                destination: DetailBeerView(beer: beer)) {}
-                                .frame(width: 0, height: 0)
-                                .hidden()
+                ScrollView {
+                    LazyVStack {
+                        ForEach(viewModel.beers, id: \.id) { beer in
+                            ZStack {
+                                BeerListRow(beer: beer)
+                                    .onAppear {
+                                        viewModel.checkNextPage(id: beer.id ?? 0)
+                                    }
+                                NavigationLink(
+                                    destination: DetailBeerView(beer: beer)) {}
+                                    .frame(width: 0, height: 0)
+                                    .hidden()
+                            }
                         }
                     }
-
-                }.listStyle(PlainListStyle())
-                .introspectTableView { scrollView in
-                    let refresh = UIRefreshControl()
-                    refresh.addTarget(viewModel, action: #selector(viewModel.refresh), for: .valueChanged)
+                }.introspectTableView { scrollView in
+                    let refresh = UIRefreshControl(frame: CGRect(), primaryAction: UIAction(handler: { _ in
+                        viewModel.refresh()
+                    }))
                     scrollView.refreshControl = refresh
                     viewModel.refreshControl = refresh
                 }
-                ActivityIndicator(isAnimating: $viewModel.isLoading, style: .large)
+                
+                if viewModel.isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(2.0, anchor: .center)
+                }
             }
 
             .alert(isPresented: $viewModel.isErrorAlert) {

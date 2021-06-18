@@ -5,7 +5,7 @@
 //  Created by GoEun Jeong on 2021/05/13.
 //
 
-import Foundation
+import UIKit
 
 class BeerListViewModel: ObservableObject {
     @Published var beers: [Beer] = .init()
@@ -15,6 +15,7 @@ class BeerListViewModel: ObservableObject {
     @Published var errorMessage = ""
     
     let networkingApi: NetworkingService
+    var refreshControl : UIRefreshControl?
     
     init(networkingApi: NetworkingService = NetworkingAPI()) {
         self.networkingApi = networkingApi
@@ -53,5 +54,12 @@ class BeerListViewModel: ObservableObject {
             }
         }
         self.isLoading = false
+    }
+    
+    @objc func refresh() {
+        self.refreshControl?.beginRefreshing()
+        self.page = 1
+        self.onAppear()
+        self.refreshControl?.endRefreshing()
     }
 }

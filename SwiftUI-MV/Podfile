@@ -9,4 +9,6 @@ target 'SwiftUI-MV' do
   pod 'Moya', '~> 14.0'
 
   pod 'Kingfisher', '~> 6.3.0'
+
+  pod 'Introspect'
 end

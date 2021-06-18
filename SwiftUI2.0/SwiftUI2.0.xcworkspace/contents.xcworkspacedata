@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/jge/Documents/dev/JGE-ios-architecture/SwiftUI-MVVM-Combine/SwiftUI-MVVM-Combine.xcodeproj">
+      location = "group:SwiftUI2.0.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

@@ -10,6 +10,8 @@ target 'SwiftUI-MVVM' do
 
   pod 'Kingfisher', '~> 6.3.0'
 
+  pod 'Introspect'
+
   target 'SwiftUI-MVVMTests' do
      
   end

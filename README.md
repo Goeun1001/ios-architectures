@@ -41,7 +41,7 @@ Thank for people of this list!
 
 ### Environment
 
-Swift 5, Xcode 12.5
+Swift 5, Xcode 12.5, SwiftUI1.0 (Support iOS 13)
 
 
 
@@ -337,6 +337,47 @@ Using Combine's PassthroughSubject
 Network - Moya
 
 Unit Tests 👌
+
+
+
+## 3-2. SwiftUI - Coordinator
+
+
+
+
+
+## 4. SwiftUI 2.0
+
+3. [SwiftUI-MVVM-Combine](https://github.com/Goeun1001/ios-architectures/tree/master/SwiftUI-MVVM-Combine)'s SwiftUI 2.0
+
+Used 
+
+```swift
+ ScrollView {
+      LazyVStack {
+```
+
+Instead of
+
+```swift
+List {
+```
+
+Used
+
+```swift
+if viewModel.isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(2.0, anchor: .center)
+                }
+```
+
+Instead of
+
+```swift
+ActivityIndicator(isAnimating: $viewModel.isLoading, style: .large)
+```
 
 
 
