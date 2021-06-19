@@ -9,7 +9,6 @@ import RIBs
 import RxSwift
 
 protocol TabBarRouting: ViewableRouting {
-    func goDetailBeer(beer: Beer)
 }
 
 protocol TabBarPresentable: Presentable {
@@ -41,9 +40,5 @@ final class TabBarInteractor: PresentableInteractor<TabBarPresentable>, TabBarIn
     override func willResignActive() {
         super.willResignActive()
         // TODO: Pause any business logic.
-    }
-    
-    func goDetailBeer(beer: Beer) {
-        self.router?.goDetailBeer(beer: beer)
     }
 }

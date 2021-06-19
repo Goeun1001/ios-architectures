@@ -9,8 +9,6 @@ import Foundation
 import UIKit
 
 class RandomBeerCoordinator: BaseCoordinator {
-    var tabbarCoordinator: TabBarCoordinator?
-    
     override func start() {
         let vc = UINavigationController(rootViewController: RandomBeerVC(coordinator: self))
         self.navigationController = vc

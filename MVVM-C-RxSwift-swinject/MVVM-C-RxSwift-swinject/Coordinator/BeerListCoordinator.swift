@@ -8,8 +8,6 @@
 import UIKit
 
 class BeerListCoordinator: BaseCoordinator {
-    var tabbarCoordinator: TabBarCoordinator?
-    
     override func start() {
         let vc = UINavigationController(rootViewController: BeerListVC(coordinator: self))
         self.navigationController = vc

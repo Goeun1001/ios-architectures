@@ -20,12 +20,9 @@ class TabBarCoordinator: BaseCoordinator {
     private let tabbarController = UITabBarController()
     
     override func start() {
-        beerListCoordinator.start()
-        beerListCoordinator.tabbarCoordinator = self
-        searchBeerCoordinator.start()
-        searchBeerCoordinator.tabbarCoordinator = self
-        randomBeerCoordinator.start()
-        randomBeerCoordinator.tabbarCoordinator = self
+        start(coordinator: beerListCoordinator)
+        start(coordinator: searchBeerCoordinator)
+        start(coordinator: randomBeerCoordinator)
         
         beerListCoordinator.navigationController.tabBarItem = UITabBarItem(title: "Beer List", image: UIImage(systemName: "1.circle"), tag: 0)
         searchBeerCoordinator.navigationController.tabBarItem = UITabBarItem(title: "Search ID", image: UIImage(systemName: "2.circle"), tag: 1)

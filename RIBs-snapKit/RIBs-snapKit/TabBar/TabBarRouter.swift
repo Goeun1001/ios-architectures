@@ -79,9 +79,4 @@ final class TabBarRouter: LaunchRouter<TabBarInteractable, TabBarViewControllabl
         randomBeer.viewControllable.uiviewController.tabBarItem = UITabBarItem(title: "Random", image: UIImage(systemName: "3.circle"), tag: 2)
     }
     
-    func goDetailBeer(beer: Beer) {
-//        let detailBeerVC = DetailBeerViewController(beer: beer)
-//        listNavigationVC!.pushViewController(detailBeerVC, animated: true)
-    }
-    
 }
