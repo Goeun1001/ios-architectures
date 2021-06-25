@@ -35,6 +35,8 @@ ViewModel only needs to do the following:
 
 - Doing too many things in the ViewModel is also pointed out as a problem. To solve this, the concept of Builder or Router was actually introduced.
 
+- The understanding and use of MVVM varies from developer to developer, and there are no guidelines, so it takes quite a while to match the details.
+
 
 
 ## [MVVM Example - storyboard](https://github.com/Goeun1001/ios-architectures/tree/master/MVVM-RxSwift-storyboard)
