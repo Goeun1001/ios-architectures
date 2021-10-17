@@ -91,10 +91,10 @@ class SearchBeerViewController: UIViewController, SearchBeerViewProtocol {
     init(presenter: SearchBeerPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
-        self.bindViewModel()
+        self.bindPresenter()
     }
     
-    private func bindViewModel() {
+    private func bindPresenter() {
         searchController.searchBar.rx.text
             .orEmpty
             .filter { $0 != "" }
@@ -225,4 +225,4 @@ class SearchBeerRouter: SearchBeerRouterProtocol, NavigationRouterType {
 
 This Example use Xcode File Template - [Viper-Rx-Template](https://github.com/Goeun1001/VIPER-Rx-Template)
 
-It makes it easy to create a VIPER file for a view.
+It makes it easy to create a VIPER file for a screen.

@@ -13,19 +13,16 @@ protocol SearchBeerViewProtocol {
     var presenter: SearchBeerPresenter { get }
 }
 
-
 protocol SearchBeerPresenterProtocol {
     var interactor: SearchBeerInteractorProtocol { get }
     var router: SearchBeerRouterProtocol { get }
 }
-
 
 protocol SearchBeerInteractorProtocol {
     var networkingApi: NetworkingService { get }
 
     func fetchSearchBeerfromAPI(id: Int) -> Single<[Beer]>
 }
-
 
 protocol SearchBeerRouterProtocol {
     func showAlert(string: String)

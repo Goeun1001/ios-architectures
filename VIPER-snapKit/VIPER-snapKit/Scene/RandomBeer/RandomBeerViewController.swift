@@ -30,7 +30,7 @@ class RandomBeerViewController: UIViewController, RandomBeerViewProtocol {
     init(presenter: RandomBeerPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
-        self.bindViewModel()
+        self.bindPresenter()
     }
     
     required init?(coder: NSCoder) {
@@ -76,7 +76,7 @@ class RandomBeerViewController: UIViewController, RandomBeerViewProtocol {
         }
     }
     
-    private func bindViewModel() {
+    private func bindPresenter() {
         self.rx.viewDidLoad
             .bind(to: presenter.input.buttonTrigger)
             .disposed(by: disposeBag)
@@ -95,5 +95,4 @@ class RandomBeerViewController: UIViewController, RandomBeerViewProtocol {
             .bind(to: activityIndicator.rx.isAnimating)
             .disposed(by: disposeBag)
     }
-    
 }

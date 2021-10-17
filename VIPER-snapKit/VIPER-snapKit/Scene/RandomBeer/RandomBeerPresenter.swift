@@ -54,5 +54,4 @@ class RandomBeerPresenter: RandomBeerPresenterProtocol {
             .bind(to: output.isLoading)
             .disposed(by: disposeBag)
     }
-    
 }

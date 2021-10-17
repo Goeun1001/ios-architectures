@@ -13,19 +13,16 @@ protocol RandomBeerViewProtocol {
     var presenter: RandomBeerPresenter { get }
 }
 
-
 protocol RandomBeerPresenterProtocol {
     var interactor: RandomBeerInteractorProtocol { get }
     var router: RandomBeerRouterProtocol { get }
 }
-
 
 protocol RandomBeerInteractorProtocol {
     var networkingApi: NetworkingService { get }
     
     func fetchRandomBeerfromAPI() -> Single<[Beer]>
 }
-
 
 protocol RandomBeerRouterProtocol {
     func showAlert(string: String)

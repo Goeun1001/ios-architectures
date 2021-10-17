@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import RxSwift
 
-
 protocol BeerListViewProtocol {
     var presenter: BeerListPresenter { get }
 }

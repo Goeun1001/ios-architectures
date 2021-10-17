@@ -25,7 +25,7 @@ class SearchBeerViewController: UIViewController, SearchBeerViewProtocol {
     init(presenter: SearchBeerPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
-        self.bindViewModel()
+        self.bindPresenter()
     }
     
     required init?(coder: NSCoder) {
@@ -69,7 +69,7 @@ class SearchBeerViewController: UIViewController, SearchBeerViewProtocol {
         }
     }
     
-    private func bindViewModel() {
+    private func bindPresenter() {
         searchController.searchBar.rx.text
             .orEmpty
             .filter { $0 != "" }
