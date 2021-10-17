@@ -79,7 +79,9 @@ class BeerListViewModel: ObservableObject {
             .store(in: &bag)
 
         beerListSubject
-            .assign(to: \.beers, on: self)
+            .sink(receiveValue: {
+                self.beers.append(contentsOf: $0)
+            })
             .store(in: &bag)
 
         errorSubject

@@ -14,8 +14,6 @@ class BeerListViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var isErrorAlert = false
     @Published var errorMessage = ""
-    
-    var refreshControl : UIRefreshControl?
 
     private var bag = Set<AnyCancellable>()
     let networkingApi: NetworkingService
@@ -100,11 +98,9 @@ class BeerListViewModel: ObservableObject {
             .store(in: &bag)
     }
     
-    @objc func refresh() {
-        self.refreshControl?.beginRefreshing()
+    func refresh() {
         self.page = 1
         getBeerListSubject.send(())
-        self.refreshControl?.endRefreshing()
     }
 
     func checkNextPage(id: Int) {

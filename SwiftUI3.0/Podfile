@@ -1,18 +1,14 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'SwiftUI2.0' do
+target 'SwiftUI3.0' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for SwiftUI2.0
   pod 'Moya/Combine', '~> 15.0.0-alpha.1'
 
-  pod 'Kingfisher', '~> 6.3.0'
-
-  pod 'Introspect'
-
-  target 'SwiftUI2.0Tests' do
+  target 'SwiftUI3.0Tests' do
     inherit! :search_paths
     # Pods for testing
   end

@@ -41,7 +41,7 @@ Thank for people of this list!
 
 ### Environment
 
-Swift 5, Xcode 12.5, SwiftUI1.0 (Support iOS 13)
+Swift 5, Xcode 12.5
 
 
 
@@ -304,6 +304,8 @@ Reference
 
 ## 1. [SwiftUI- MV](https://github.com/Goeun1001/ios-architectures/tree/master/SwiftUI-MV)
 
+- iOS 13
+
 Using @State only
 
 Network - Moya
@@ -342,6 +344,8 @@ Unit Tests 👌
 
 ## 4. [SwiftUI 2.0](https://github.com/Goeun1001/ios-architectures/tree/master/SwiftUI2.0)
 
+- iOS 14
+
 3. [SwiftUI-MVVM-Combine](https://github.com/Goeun1001/ios-architectures/tree/master/SwiftUI-MVVM-Combine)'s SwiftUI 2.0
 
 Used 
@@ -371,6 +375,50 @@ Instead of
 
 ```swift
 ActivityIndicator(isAnimating: $viewModel.isLoading, style: .large)
+```
+
+
+
+## 5. [SwiftUI 3.0](https://github.com/Goeun1001/ios-architectures/tree/master/SwiftUI3.0)
+
+- iOS 15, Xcode 13.0
+
+3. [SwiftUI-MVVM-Combine](https://github.com/Goeun1001/ios-architectures/tree/master/SwiftUI-MVVM-Combine)'s SwiftUI 3.0
+
+Used 
+
+```swift
+.refreshable {
+```
+
+Instead of
+
+```swift
+.introspectTableView { scrollView in
+```
+
+Used
+
+```swift
+AsyncImage
+```
+
+Instead of
+
+```swift
+KFImage
+```
+
+Used
+
+```swift
+.searchable(text: $viewModel.text)
+```
+
+Instead of
+
+```swift
+TextField("Search ...", text: $viewModel.text
 ```
 
 
